@@ -12,6 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,8 +35,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=10.0.0.5, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.10.0.5\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Pipelines, Version=10.0.0.5, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.IO.Pipelines.10.0.5\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=10.0.0.5, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.10.0.5\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=10.0.0.5, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.10.0.5\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.6.3\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,30 +76,46 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ally.cs" />
+    <Compile Include="DialogOption.cs" />
+    <Compile Include="Enemy.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FriendlyNpc.cs" />
+    <Compile Include="GameMap.cs" />
+    <Compile Include="GameState.cs" />
+    <Compile Include="GameStateManager.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="Organism.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveData.cs" />
+    <Compile Include="Section.cs" />
+    <Compile Include="Tile.cs" />
+    <Compile Include="TileType.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -79,5 +125,216 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\MapItems\assets_img_MapItems_BritneySpearsItemRequired.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\MapItems\assets.img.MapItems.BritneySpearsItemRequired.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\MapItems\assets.img.MapItems.FirstAidSpray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\MapItems\assets_img_MapItems_FirstAidSpray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Maps\Map1\Map1LeftSection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Maps\Map1\Map1MainSection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Maps\Map1\Map1RightSection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Maps\Map2\Map2LeftSection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Maps\Map2\Map2LeftTopSection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Maps\Map2\Map2MainSection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Maps\Map3\Map3LeftSection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Maps\Map3\Map3MainSection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\BigDaddy\BigDaddy_InteractionIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\BigDaddy\BigDaddy_SpriteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\DrSalvador\DrSalvador_InteractionIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\DrSalvador\DrSalvador_SpriteIcon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\Hercules\Hercules_InteractionIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\Hercules\Hercules_SpriteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\Kratos\Kratos_InteractionIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\Kratos\Kratos_SpriteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\NamelessKing\NamelessKing_InteractionIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\NamelessKing\NamelessKing_SpriteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\Nemesis\Nemesis_InteractionIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\Nemesis\Nemesis_ItemGiven.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\Nemesis\Nemesis_SpriteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\Regenerator\Regenerator_InteractionIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\Regenerator\Regenerator_SpriteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\Verdugo\Verdugo_InteractionIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\Hostiles\Verdugo\Verdugo_SpriteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\NPCs\FireKeeper\FireKeeper_InteractionIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\NPCs\FireKeeper\FireKeeper_SpriteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\NPCs\Gwyndolin\Gwyndolin_InteractionIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\NPCs\Gwyndolin\Gwyndolin_SpriteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\NPCs\Sphinx\Sphinx_InteractionIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\NPCs\Sphinx\Sphinx_ItemGiven.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\NPCs\Sphinx\Sphinx_SpriteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\RecruitableNpcs\BritneySpears\BritneySpears_InteractionIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\RecruitableNpcs\BritneySpears\BritneySpears_ItemRequired.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\RecruitableNpcs\BritneySpears\BritneySpears_SpriteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\RecruitableNpcs\Siegward\Siegward_InteractionIcon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\RecruitableNpcs\Siegward\Siegward_ItemRequired.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\RecruitableNpcs\Siegward\Siegward_SpriteIcon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\RecruitableNpcs\Solaire\Solaire_InteractionIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\RecruitableNpcs\Solaire\Solaire_ItemRequired.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\RecruitableNpcs\Solaire\Solaire_SpriteIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\img\Npcs\RecruitableNpcs\Siegward\Siegward_InteractionIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\Hostiles\BigDaddy\BigDaddy_EnemyCriticalHit.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\Hostiles\BigDaddy\BigDaddy_EnemyDeath.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\Hostiles\DrSalvador\DrSalvador_EnemyCriticalHit.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\Hostiles\DrSalvador\DrSalvador_EnemyDeath.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\Hostiles\Hercules\Hercules_EnemyCriticalHit.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\Hostiles\Hercules\Hercules_EnemyDeath.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\Hostiles\Kratos\Kratos_EnemyCriticalHit.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\Hostiles\Kratos\Kratos_EnemyDeath.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\Hostiles\NamelessKing\NamelessKing_EnemyCriticalHit.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\Hostiles\NamelessKing\NamelessKing_EnemyDeath.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\Hostiles\Nemesis\Nemesis_EnemyCriticalHit.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\Hostiles\Nemesis\Nemesis_EnemyDeath.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\Hostiles\Regenerator\Regenerator_EnemyCriticalHit.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\Hostiles\Regenerator\Regenerator_EnemyDeath.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\Hostiles\Verdugo\Verdugo_EnemyCriticalHit.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\Hostiles\Verdugo\Verdugo_EnemyDeath.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\NPCs\FireKeeper\FireKeeper_DuringLeveling.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\RecruitableNpcs\BritneySpears\BritneySpears_RecruitmentSound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\RecruitableNpcs\Siegward\Siegward_AbilityUsedSound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\RecruitableNpcs\Siegward\Siegward_RecruitmentSound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\RecruitableNpcs\Solaire\Solaire_RecruitmentSound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\sounds\npcs\RecruitableNpcs\Solaire\Solaire_AbilityUsedSound.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets'))" />
+  </Target>
 </Project>

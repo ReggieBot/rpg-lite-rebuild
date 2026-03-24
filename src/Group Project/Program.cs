@@ -14,7 +14,7 @@ namespace Group_Project
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
+            //Application.EnableVisualStyles(); to view custom colors
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
         }

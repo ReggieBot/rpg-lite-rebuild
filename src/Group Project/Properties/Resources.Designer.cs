@@ -81,6 +81,24 @@ namespace Group_Project.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream BigDaddy_EnemyCriticalHit {
+            get {
+                return ResourceManager.GetStream("BigDaddy_EnemyCriticalHit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream BigDaddy_EnemyDeath {
+            get {
+                return ResourceManager.GetStream("BigDaddy_EnemyDeath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap BigDaddy_InteractionIcon {
@@ -121,12 +139,39 @@ namespace Group_Project.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream BritneySpears_RecruitmentSound {
+            get {
+                return ResourceManager.GetStream("BritneySpears_RecruitmentSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap BritneySpears_SpriteIcon {
             get {
                 object obj = ResourceManager.GetObject("BritneySpears_SpriteIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream DrSalvador_EnemyCriticalHit {
+            get {
+                return ResourceManager.GetStream("DrSalvador_EnemyCriticalHit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream DrSalvador_EnemyDeath {
+            get {
+                return ResourceManager.GetStream("DrSalvador_EnemyDeath", resourceCulture);
             }
         }
         
@@ -147,6 +192,15 @@ namespace Group_Project.Properties {
             get {
                 object obj = ResourceManager.GetObject("DrSalvador_SpriteIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream FireKeeper_DuringLeveling {
+            get {
+                return ResourceManager.GetStream("FireKeeper_DuringLeveling", resourceCulture);
             }
         }
         
@@ -191,6 +245,24 @@ namespace Group_Project.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Hercules_EnemyCriticalHit {
+            get {
+                return ResourceManager.GetStream("Hercules_EnemyCriticalHit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Hercules_EnemyDeath {
+            get {
+                return ResourceManager.GetStream("Hercules_EnemyDeath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Hercules_InteractionIcon {
@@ -207,6 +279,24 @@ namespace Group_Project.Properties {
             get {
                 object obj = ResourceManager.GetObject("Hercules_SpriteIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Kratos_EnemyCriticalHit {
+            get {
+                return ResourceManager.GetStream("Kratos_EnemyCriticalHit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Kratos_EnemyDeath {
+            get {
+                return ResourceManager.GetStream("Kratos_EnemyDeath", resourceCulture);
             }
         }
         
@@ -311,6 +401,24 @@ namespace Group_Project.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream NamelessKing_EnemyCriticalHit {
+            get {
+                return ResourceManager.GetStream("NamelessKing_EnemyCriticalHit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream NamelessKing_EnemyDeath {
+            get {
+                return ResourceManager.GetStream("NamelessKing_EnemyDeath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap NamelessKing_InteractionIcon {
@@ -327,6 +435,24 @@ namespace Group_Project.Properties {
             get {
                 object obj = ResourceManager.GetObject("NamelessKing_SpriteIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Nemesis_EnemyCriticalHit {
+            get {
+                return ResourceManager.GetStream("Nemesis_EnemyCriticalHit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Nemesis_EnemyDeath {
+            get {
+                return ResourceManager.GetStream("Nemesis_EnemyDeath", resourceCulture);
             }
         }
         
@@ -361,6 +487,24 @@ namespace Group_Project.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Regenerator_EnemyCriticalHit {
+            get {
+                return ResourceManager.GetStream("Regenerator_EnemyCriticalHit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Regenerator_EnemyDeath {
+            get {
+                return ResourceManager.GetStream("Regenerator_EnemyDeath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Regenerator_InteractionIcon {
@@ -376,6 +520,102 @@ namespace Group_Project.Properties {
         internal static System.Drawing.Bitmap Regenerator_SpriteIcon {
             get {
                 object obj = ResourceManager.GetObject("Regenerator_SpriteIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Siegward_AbilityUsedSound {
+            get {
+                return ResourceManager.GetStream("Siegward_AbilityUsedSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Siegward_InteractionIcon {
+            get {
+                object obj = ResourceManager.GetObject("Siegward_InteractionIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Siegward_ItemRequired {
+            get {
+                object obj = ResourceManager.GetObject("Siegward_ItemRequired", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Siegward_RecruitmentSound {
+            get {
+                return ResourceManager.GetStream("Siegward_RecruitmentSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Siegward_SpriteIcon {
+            get {
+                object obj = ResourceManager.GetObject("Siegward_SpriteIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Solaire_AbilityUsedSound {
+            get {
+                return ResourceManager.GetStream("Solaire_AbilityUsedSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Solaire_InteractionIcon {
+            get {
+                object obj = ResourceManager.GetObject("Solaire_InteractionIcon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Solaire_ItemRequired {
+            get {
+                object obj = ResourceManager.GetObject("Solaire_ItemRequired", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Solaire_RecruitmentSound {
+            get {
+                return ResourceManager.GetStream("Solaire_RecruitmentSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Solaire_SpriteIcon {
+            get {
+                object obj = ResourceManager.GetObject("Solaire_SpriteIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -407,6 +647,24 @@ namespace Group_Project.Properties {
             get {
                 object obj = ResourceManager.GetObject("Sphinx_SpriteIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Verdugo_EnemyCriticalHit {
+            get {
+                return ResourceManager.GetStream("Verdugo_EnemyCriticalHit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Verdugo_EnemyDeath {
+            get {
+                return ResourceManager.GetStream("Verdugo_EnemyDeath", resourceCulture);
             }
         }
         
