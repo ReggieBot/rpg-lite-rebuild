@@ -61,4 +61,22 @@ namespace Group_Project
             LoadCurrentSection();
 
         }
+
+        // todo: this method is being called during startup in InitializeGame()
+        // instead of just building everything in one gargantuan method, we'll delegate to one
+        // priv builder per map. Keeps everything self-contained
+        private List<GameMap> InitializeAllMaps()
+        {}
+
+        // todo: builds/returns a fully configed GameMap for Map1
+        // creates all of the enemies, npcs, items, and section for this map
+        // loads them into the GameMap object
+        // that map object is what the rest of the game actually reads from,
+        // nothing else creates enemies or items, they all look them up from here
+        private GameMap BuildMap1()
+        {}
+
+
+
     }
+}
