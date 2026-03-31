@@ -41,7 +41,7 @@ namespace Group_Project
             _saveManager = new GameStateManager();
             _maps = InitializeAllMaps();
 
-            var saveData = _saveManager.LoadGame();
+            SaveData saveData = _saveManager.LoadGame();
             if (saveData != null)
             {
                 _player = RestorePlayerFromSave(saveData);
@@ -62,11 +62,19 @@ namespace Group_Project
 
         }
 
-        // todo: this method is being called during startup in InitializeGame()
+        // This method is being called during startup in InitializeGame()
         // instead of just building everything in one gargantuan method, we'll delegate to one
         // priv builder per map. Keeps everything self-contained
         private List<GameMap> InitializeAllMaps()
-        {}
+        {
+            // delegate to individual builders for each map, then add them to the list and return
+            return new List<GameMap>
+            {
+                BuildMap1(),
+                BuildMap2(),
+                BuildMap3()
+            };
+        }
 
         // todo: builds/returns a fully configed GameMap for Map1
         // creates all of the enemies, npcs, items, and section for this map
@@ -74,8 +82,27 @@ namespace Group_Project
         // that map object is what the rest of the game actually reads from,
         // nothing else creates enemies or items, they all look them up from here
         private GameMap BuildMap1()
-        {}
+        {
+            GameMap map = new GameMap("Map1");
 
+            return map;
+        }
+
+        // builder for Map2
+        private GameMap BuildMap2()
+        {
+            GameMap map = new GameMap("Map2");
+
+            return map;
+        }
+
+        // builder for Map3
+        private GameMap BuildMap3()
+        {
+            GameMap map = new GameMap("Map3")
+
+            return map;
+        }
 
 
     }
