@@ -97,6 +97,88 @@ namespace Group_Project {
             map1.MapNPCs.Add(siegward);
             map1.MapNPCs.Add(solaire);
 
+            // instantiate + add items to map
+            Item firstAidSpray = new Item
+            ("First Aid Spray",
+            "Restores Health",
+            "A single-use item that fully restores the player's health when used in combat.",
+            @"assets\img\MapItems\assets_img_MapItems_FirstAidSpray.png",
+            2);
+
+            Item siegbrau = new Item
+            ("Siegbrau",
+            "A warm drink for Siegward.",
+            "Give to Siegward to recruit him.",
+            "PLACEHOLDER PATHING",
+            1
+            );
+
+            map1.MapItems.Add(firstAidSpray);
+            map1.MapItems.Add(siegbrau);
+
+            // Section 1 scaffolding
+            Section m1_Section1 = new Section("Map 1 - Section 1");
+
+            /*
+
+            From what I can see, the 'Section' constructor creates an empty dictionary.
+            First we need to instantiate a tile, the tile constructor expects the following parameters:
+            - Row
+            - Column
+            - TileType (enum in TileType.cs)
+
+            Once instantiated, we need to add that tile to the sections dictionary
+            The dictionary doesn't expect row/column from the looks of it. It expects a single tile position
+            The tile position is calculated using the following formula (Row * 7 + Col), assuming 0-based indexing.
+
+            That calculated location becomes the Section dictionary key, and the value is the Tile object we created.
+            So we are storing tile location twice, in the tile itself, and in the section dictionary.
+            Though they both use different formats of location data
+
+            Whatever we don't explicitly add to the section's tile dict will default to null.
+            I'm assuming we are going to treat null tiles as empty spaces that are walkable, but have no interaction.
+
+             */
+
+            // [ITEM] First Aid Spray
+            Tile firstAidSprayTile = new Tile(5, 5, TileType.Item);
+            firstAidSprayTile.EntityName = "First Aid Spray";
+            firstAidSprayTile.ImagePath = @"assets\img\MapItems\assets_img_MapItems_FirstAidSpray.png";
+            m1_Section1.Tiles.Add(40, firstAidSprayTile);
+
+            // [NPC] FireKeeper
+            Tile fireKeeperTile = new Tile(3, 5, TileType.LevelUp);
+            fireKeeperTile.EntityName = "FireKeeper";
+            fireKeeperTile.ImagePath = @"assets\img\Npcs\NPCs\FireKeeper\FireKeeper_SpriteIcon.png";
+            m1_Section1.Tiles.Add(26, fireKeeperTile);
+
+            // [ENEMY] Dr. Salvador
+            Tile drSalvadorTile = new Tile(1, 2, TileType.Enemy);
+            drSalvadorTile.EntityName = "DrSalvador";
+            drSalvadorTile.ImagePath = @"assets\img\Npcs\Hostiles\DrSalvador\DrSalvador_SpriteIcon.jpg";
+            m1_Section1.Tiles.Add(9, drSalvadorTile);
+
+            // [ENEMY] Regenerator
+            Tile regeneratorTile = new Tile(4, 1, TileType.Enemy);
+            regeneratorTile.EntityName = "Regenerator";
+            regeneratorTile.ImagePath = @"assets\img\Npcs\Hostiles\Regenerator\Regenerator_SpriteIcon.png";
+            m1_Section1.Tiles.Add(29, regeneratorTile);
+
+            // [INVENTORY]
+            Tile inventoryTile = new Tile(3, 3, TileType.Inventory);
+            inventoryTile.EntityName = "Inventory";
+            inventoryTile.ImagePath = "PLACEHOLDER";
+            m1_Section1.Tiles.Add(24, inventoryTile);
+
+            // [ARROW] leads to Section 2
+            Tile leftArrow = new Tile(3, 0, TileType.ArrowLeft);
+            leftArrow.DestinationSectionIndex = 1; // index of LeftSection
+            leftArrow.ImagePath = "PLACEHOLDER";
+            m1_Section1.Tiles.Add(21, leftArrow);
+
+
+
+
         }
 
         public static GameMap BuildMap2() {
