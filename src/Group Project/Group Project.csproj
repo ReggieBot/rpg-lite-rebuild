@@ -85,6 +85,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Maps\Map1Factory.cs" />
     <Compile Include="FriendlyNpc.cs" />
     <Compile Include="GameMap.cs" />
     <Compile Include="GameState.cs" />

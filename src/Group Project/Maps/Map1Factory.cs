@@ -8,7 +8,19 @@ namespace Group_Project {
 
     public static class MapFactory {
 
+        // helper method for building tiles
+        private static Tile MakeTile(int row, int col, TileType type, string entityName = null,
+            string imagePath = null, int destination = -1) {
+                Tile tile = new Tile(row, col, type);
+                tile.EntityName = entityName;
+                tile.ImagePath = imagePath;
+                tile.DestinationSectionIndex = destination;
+                return tile;
+        }
+
         public static GameMap BuildMap1() {
+
+            // create map and populate with enemies, NPCs, items, and sections
             GameMap map1 = new GameMap("Map 1");
 
             // [ENEMY] Regenerator
@@ -141,40 +153,28 @@ namespace Group_Project {
              */
 
             // [ITEM] First Aid Spray
-            Tile firstAidSprayTile = new Tile(5, 5, TileType.Item);
-            firstAidSprayTile.EntityName = "First Aid Spray";
-            firstAidSprayTile.ImagePath = @"assets\img\MapItems\assets_img_MapItems_FirstAidSpray.png";
-            m1_Section1.Tiles.Add(40, firstAidSprayTile);
+            m1_Section1.Tiles.Add(40, MakeTile(5, 5, TileType.Item, "First Aid Spray",
+                @"assets\img\MapItems\assets_img_MapItems_FirstAidSpray.png"));
 
             // [NPC] FireKeeper
-            Tile fireKeeperTile = new Tile(3, 5, TileType.LevelUp);
-            fireKeeperTile.EntityName = "FireKeeper";
-            fireKeeperTile.ImagePath = @"assets\img\Npcs\NPCs\FireKeeper\FireKeeper_SpriteIcon.png";
-            m1_Section1.Tiles.Add(26, fireKeeperTile);
+            m1_Section1.Tiles.Add(26, MakeTile(3, 5, TileType.LevelUp, "FireKeeper",
+                @"assets\img\Npcs\NPCs\FireKeeper\FireKeeper_SpriteIcon.png"));
 
             // [ENEMY] Dr. Salvador
-            Tile drSalvadorTile = new Tile(1, 2, TileType.Enemy);
-            drSalvadorTile.EntityName = "DrSalvador";
-            drSalvadorTile.ImagePath = @"assets\img\Npcs\Hostiles\DrSalvador\DrSalvador_SpriteIcon.jpg";
-            m1_Section1.Tiles.Add(9, drSalvadorTile);
+            m1_Section1.Tiles.Add(9, MakeTile(1, 2, TileType.Enemy, "DrSalvador",
+                @"assets\img\Npcs\Hostiles\DrSalvador\DrSalvador_SpriteIcon.jpg"));
 
             // [ENEMY] Regenerator
-            Tile regeneratorTile = new Tile(4, 1, TileType.Enemy);
-            regeneratorTile.EntityName = "Regenerator";
-            regeneratorTile.ImagePath = @"assets\img\Npcs\Hostiles\Regenerator\Regenerator_SpriteIcon.png";
-            m1_Section1.Tiles.Add(29, regeneratorTile);
+            m1_Section1.Tiles.Add(29, MakeTile(4, 1, TileType.Enemy, "Regenerator",
+                @"assets\img\Npcs\Hostiles\Regenerator\Regenerator_SpriteIcon.png"));
 
             // [INVENTORY]
-            Tile inventoryTile = new Tile(3, 3, TileType.Inventory);
-            inventoryTile.EntityName = "Inventory";
-            inventoryTile.ImagePath = "PLACEHOLDER";
-            m1_Section1.Tiles.Add(24, inventoryTile);
+            m1_Section1.Tiles.Add(24, MakeTile(3, 3, TileType.Inventory, "Inventory",
+                "PLACEHOLDER"));
 
             // [ARROW] leads to Section 2
-            Tile leftArrow = new Tile(3, 0, TileType.ArrowLeft);
-            leftArrow.DestinationSectionIndex = 1; // index of LeftSection
-            leftArrow.ImagePath = "PLACEHOLDER";
-            m1_Section1.Tiles.Add(21, leftArrow);
+            m1_Section1.Tiles.Add(21, MakeTile(3, 0, TileType.ArrowLeft,
+                imagePath: "PLACEHOLDER", destination: 1)); // index of LeftSection
 
 
 
