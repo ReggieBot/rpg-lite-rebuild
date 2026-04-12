@@ -159,15 +159,29 @@ namespace Group_Project {
                 imagePath: "PLACEHOLDER", destination: 1); // index of LeftSection
 
 
+            // Section 2 scaffolding
+            Section m1_Section2 = new Section("Map 1 - Section 2");
 
+            // [NPC] Siegward
+            MapEntityFactory.AddTile(m1_Section2, 2, 4, TileType.FriendlyNPC, "Siegward",
+                @"assets\img\Npcs\RecruitableNpcs\Siegward\Siegward_SpriteIcon.jpg");
 
-        }
+            // [ITEM] Siegbrau
+            MapEntityFactory.AddTile(m1_Section2, 5, 1, TileType.Item, "Siegbrau",
+                "PLACEHOLDER PATHING");
 
-        public static GameMap BuildMap2() {
+            // [ENEMY] BigDaddy
+            MapEntityFactory.AddTile(m1_Section2, 1, 1, TileType.Enemy, "BigDaddy",
+                @"assets\img\Npcs\Hostiles\BigDaddy\BigDaddy_SpriteIcon.png");
 
-        }
+            // [INVENTORY]
+            MapEntityFactory.AddTile(m1_Section2, 3, 3, TileType.Inventory, "Inventory",
+                "PLACEHOLDER");
 
-        public static GameMap BuildMap3() {
+            // [ARROW] leads back to Section 1
+            MapEntityFactory.AddTile(m1_Section2, 3, 6, TileType.ArrowRight,
+                imagePath: "PLACEHOLDER", destination: 0); // index of MainSection
+
 
         }
     }
