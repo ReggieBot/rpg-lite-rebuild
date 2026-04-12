@@ -44,7 +44,7 @@ namespace Group_Project
             SaveData saveData = _saveManager.LoadGame();
             if (saveData != null)
             {
-                _player = RestorePlayerFromSave(saveData);
+              //  _player = RestorePlayerFromSave(saveData);
                 _currentMapIndex = _maps.FindIndex(
                     m => m.MapName == saveData.MapProgress.MapName);
                 if (_currentMapIndex < 0) _currentMapIndex = 0;
@@ -56,54 +56,26 @@ namespace Group_Project
             }
 
             _currentState = GameState.Exploring;
-            InitializeGrid();
-            InitializeDialogs();
-            LoadCurrentSection();
+            //InitializeGrid();
+            //InitializeDialogs();
+            //LoadCurrentSection();
 
         }
 
-        // This method is being called during startup in InitializeGame()
-        // instead of just building everything in one gargantuan method, we'll delegate to one
-        // priv builder per map. Keeps everything self-contained
+        /*
+         This method is being called during startup in InitializeGame()
+         instead of just building everything in one gargantuan method, we'll delegate to one
+         priv builder per map. Keeps everything self-contained
+         this delegates building to the MapFactory classes,
+         which in turn delegate to the MapEntityFactory for creating entities
+        */
         private List<GameMap> InitializeAllMaps()
         {
             // delegate to individual builders for each map, then add them to the list and return
             return new List<GameMap>
             {
-                BuildMap1(),
-                BuildMap2(),
-                BuildMap3()
+                Map1Factory.BuildMap1()
             };
         }
-
-        // todo: builds/returns a fully configed GameMap for Map1
-        // creates all of the enemies, npcs, items, and section for this map
-        // loads them into the GameMap object
-        // that map object is what the rest of the game actually reads from,
-        // nothing else creates enemies or items, they all look them up from here
-        private GameMap BuildMap1()
-        {
-            GameMap map = new GameMap("Map1");
-
-            return map;
-        }
-
-        // builder for Map2
-        private GameMap BuildMap2()
-        {
-            GameMap map = new GameMap("Map2");
-
-            return map;
-        }
-
-        // builder for Map3
-        private GameMap BuildMap3()
-        {
-            GameMap map = new GameMap("Map3")
-
-            return map;
-        }
-
-
     }
 }
