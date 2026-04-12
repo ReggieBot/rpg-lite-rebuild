@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Group_Project {
 
-    public static class MapFactory {
+    public static class Map1Factory {
 
         public static GameMap BuildMap1()
         {
