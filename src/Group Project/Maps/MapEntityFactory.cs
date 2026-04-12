@@ -27,7 +27,7 @@ namespace Group_Project {
             string imagePath = null, int destination = -1)
         {
             int index = row * 7 + col;
-            Tile tile = MakeTile(row, col, type, entityName, imagePath, destination);
+            Tile tile = CreateTile(row, col, type, entityName, imagePath, destination);
             section.Tiles.Add(index, tile);
         }
 
