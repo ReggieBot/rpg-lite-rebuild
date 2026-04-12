@@ -8,10 +8,11 @@ namespace Group_Project {
 
     public static class MapFactory {
 
-        public static GameMap BuildMap1() {
+        public static GameMap BuildMap1()
+        {
 
             // create map and populate with enemies, NPCs, items, and sections
-            GameMap map1 = new GameMap("Map 1");
+            GameMap map1 = new GameMap("Map1");
 
             // [ENEMY] Regenerator
             Enemy regenerator = MapEntityFactory.CreateEnemy(
@@ -85,7 +86,7 @@ namespace Group_Project {
                 "Solaire",
                 @"assets\img\Npcs\RecruitableNpcs\Solaire\Solaire_SpriteIcon.png",
                 @"assets\img\Npcs\RecruitableNpcs\Solaire\Solaire_InteractionIcon.png",
-                "Sunlight Medal");
+                null);
 
             // add NPCs to map
             map1.MapNPCs.Add(fireKeeper);
@@ -182,6 +183,45 @@ namespace Group_Project {
             MapEntityFactory.AddTile(m1_Section2, 3, 6, TileType.ArrowRight,
                 imagePath: "PLACEHOLDER", destination: 0); // index of MainSection
 
+            // [ARROW] leads to Section 3
+            MapEntityFactory.AddTile(m1_Section2, 0, 0, TileType.ArrowUp,
+                imagePath: "PLACEHOLDER", destination: 2); // index of section 3
+
+
+            // section 3 scaffolding
+            Section m1_Section3 = new Section("Map 1 - Section 3");
+
+            // [NPC] Solaire
+            MapEntityFactory.AddTile(m1_Section3, 6, 2, TileType.FriendlyNPC, "Solaire",
+                @"assets\img\Npcs\RecruitableNpcs\Solaire\Solaire_SpriteIcon.png");
+
+            // [INVENTORY]
+            MapEntityFactory.AddTile(m1_Section3, 2, 0, TileType.Inventory, "Inventory",
+                "PLACEHOLDER");
+
+            // [BOSS] Nemesis
+            MapEntityFactory.AddTile(m1_Section3, 1, 5, TileType.Boss, "Nemesis",
+                @"assets\img\Npcs\Hostiles\Nemesis\Nemesis_SpriteIcon.png");
+
+            // [ARROW] leads back to Section 2
+            MapEntityFactory.AddTile(m1_Section3, 6, 0, TileType.ArrowDown,
+                imagePath: "PLACEHOLDER", destination: 1); //
+
+
+
+            // Dictionary to hold sections
+            Dictionary<string, Section> sections = new Dictionary<string, Section>
+            {
+                { "main", m1_Section1 },
+                { "left", m1_Section2 },
+                { "up", m1_Section3 }
+            };
+
+
+            // populate map with sections
+            map1.LoadMap(sections);
+
+            return map1;
 
         }
     }
