@@ -77,5 +77,30 @@ namespace Group_Project
                 Map1Factory.BuildMap1()
             };
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelAllyTwo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelAllyOne_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

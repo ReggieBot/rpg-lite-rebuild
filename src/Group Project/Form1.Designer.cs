@@ -30,94 +30,152 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tableLayoutPanel_MainWindow = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.AllyOneLabel = new System.Windows.Forms.Label();
-            this.AllyTwoLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel_Grid = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel_Sidebar = new System.Windows.Forms.TableLayoutPanel();
+            this.labelSectionTitle = new System.Windows.Forms.Label();
+            this.labelSectionValue = new System.Windows.Forms.Label();
+            this.labelPlayerStats = new System.Windows.Forms.Label();
+            this.labelStatus = new System.Windows.Forms.Label();
+            this.labelAllyOne = new System.Windows.Forms.Label();
+            this.labelAllyTwo = new System.Windows.Forms.Label();
             this.tableLayoutPanel_MainWindow.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel_Sidebar.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel_MainWindow
             // 
-            this.tableLayoutPanel_MainWindow.ColumnCount = 1;
-            this.tableLayoutPanel_MainWindow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel_MainWindow.Controls.Add(this.tableLayoutPanel1, 0, 0);
+            this.tableLayoutPanel_MainWindow.ColumnCount = 2;
+            this.tableLayoutPanel_MainWindow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tableLayoutPanel_MainWindow.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel_MainWindow.Controls.Add(this.tableLayoutPanel_Grid, 0, 0);
+            this.tableLayoutPanel_MainWindow.Controls.Add(this.tableLayoutPanel_Sidebar, 1, 0);
             this.tableLayoutPanel_MainWindow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel_MainWindow.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel_MainWindow.Name = "tableLayoutPanel_MainWindow";
             this.tableLayoutPanel_MainWindow.RowCount = 1;
-            this.tableLayoutPanel_MainWindow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel_MainWindow.Size = new System.Drawing.Size(810, 450);
+            this.tableLayoutPanel_MainWindow.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_MainWindow.Size = new System.Drawing.Size(850, 487);
             this.tableLayoutPanel_MainWindow.TabIndex = 0;
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanel_Grid
             // 
-            this.tableLayoutPanel1.ColumnCount = 7;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 6, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(804, 444);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel_Grid.ColumnCount = 7;
+            this.tableLayoutPanel_Grid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel_Grid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel_Grid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel_Grid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel_Grid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel_Grid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel_Grid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel_Grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel_Grid.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel_Grid.Name = "tableLayoutPanel_Grid";
+            this.tableLayoutPanel_Grid.RowCount = 7;
+            this.tableLayoutPanel_Grid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.tableLayoutPanel_Grid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.tableLayoutPanel_Grid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.tableLayoutPanel_Grid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.tableLayoutPanel_Grid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.tableLayoutPanel_Grid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.tableLayoutPanel_Grid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28572F));
+            this.tableLayoutPanel_Grid.Size = new System.Drawing.Size(631, 481);
+            this.tableLayoutPanel_Grid.TabIndex = 0;
             // 
-            // tableLayoutPanel2
+            // tableLayoutPanel_Sidebar
             // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.AllyTwoLabel, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.AllyOneLabel, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(687, 3);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35.08772F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64.91228F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(114, 57);
-            this.tableLayoutPanel2.TabIndex = 0;
+            this.tableLayoutPanel_Sidebar.ColumnCount = 1;
+            this.tableLayoutPanel_Sidebar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_Sidebar.Controls.Add(this.labelSectionTitle, 0, 0);
+            this.tableLayoutPanel_Sidebar.Controls.Add(this.labelSectionValue, 0, 1);
+            this.tableLayoutPanel_Sidebar.Controls.Add(this.labelPlayerStats, 0, 2);
+            this.tableLayoutPanel_Sidebar.Controls.Add(this.labelStatus, 0, 3);
+            this.tableLayoutPanel_Sidebar.Controls.Add(this.labelAllyOne, 0, 4);
+            this.tableLayoutPanel_Sidebar.Controls.Add(this.labelAllyTwo, 0, 5);
+            this.tableLayoutPanel_Sidebar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel_Sidebar.Location = new System.Drawing.Point(640, 3);
+            this.tableLayoutPanel_Sidebar.Name = "tableLayoutPanel_Sidebar";
+            this.tableLayoutPanel_Sidebar.RowCount = 8;
+            this.tableLayoutPanel_Sidebar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel_Sidebar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel_Sidebar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel_Sidebar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel_Sidebar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel_Sidebar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel_Sidebar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel_Sidebar.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel_Sidebar.Size = new System.Drawing.Size(207, 481);
+            this.tableLayoutPanel_Sidebar.TabIndex = 1;
             // 
-            // AllyOneLabel
+            // labelSectionTitle
             // 
-            this.AllyOneLabel.AutoSize = true;
-            this.AllyOneLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AllyOneLabel.Location = new System.Drawing.Point(3, 0);
-            this.AllyOneLabel.Name = "AllyOneLabel";
-            this.AllyOneLabel.Size = new System.Drawing.Size(51, 20);
-            this.AllyOneLabel.TabIndex = 0;
-            this.AllyOneLabel.Text = "Siegward";
+            this.labelSectionTitle.AutoSize = true;
+            this.labelSectionTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelSectionTitle.Location = new System.Drawing.Point(3, 0);
+            this.labelSectionTitle.Name = "labelSectionTitle";
+            this.labelSectionTitle.Size = new System.Drawing.Size(201, 30);
+            this.labelSectionTitle.TabIndex = 0;
+            this.labelSectionTitle.Text = "Section";
+            this.labelSectionTitle.Click += new System.EventHandler(this.label1_Click);
             // 
-            // AllyTwoLabel
+            // labelSectionValue
             // 
-            this.AllyTwoLabel.AutoSize = true;
-            this.AllyTwoLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AllyTwoLabel.Location = new System.Drawing.Point(60, 0);
-            this.AllyTwoLabel.Name = "AllyTwoLabel";
-            this.AllyTwoLabel.Size = new System.Drawing.Size(51, 20);
-            this.AllyTwoLabel.TabIndex = 1;
-            this.AllyTwoLabel.Text = "Solaire";
+            this.labelSectionValue.AutoSize = true;
+            this.labelSectionValue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelSectionValue.Location = new System.Drawing.Point(3, 30);
+            this.labelSectionValue.Name = "labelSectionValue";
+            this.labelSectionValue.Size = new System.Drawing.Size(201, 30);
+            this.labelSectionValue.TabIndex = 1;
+            this.labelSectionValue.Text = "Map 1 - Section 1";
+            // 
+            // labelPlayerStats
+            // 
+            this.labelPlayerStats.AutoSize = true;
+            this.labelPlayerStats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelPlayerStats.Location = new System.Drawing.Point(3, 60);
+            this.labelPlayerStats.Name = "labelPlayerStats";
+            this.labelPlayerStats.Size = new System.Drawing.Size(201, 50);
+            this.labelPlayerStats.TabIndex = 2;
+            this.labelPlayerStats.Text = "HP: 100/100 | DMG: 15 | LVL: 1";
+            // 
+            // labelStatus
+            // 
+            this.labelStatus.AutoSize = true;
+            this.labelStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelStatus.Location = new System.Drawing.Point(3, 110);
+            this.labelStatus.Name = "labelStatus";
+            this.labelStatus.Size = new System.Drawing.Size(201, 50);
+            this.labelStatus.TabIndex = 3;
+            this.labelStatus.Text = "Ready";
+            this.labelStatus.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // labelAllyOne
+            // 
+            this.labelAllyOne.AutoSize = true;
+            this.labelAllyOne.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelAllyOne.Location = new System.Drawing.Point(3, 160);
+            this.labelAllyOne.Name = "labelAllyOne";
+            this.labelAllyOne.Size = new System.Drawing.Size(201, 30);
+            this.labelAllyOne.TabIndex = 4;
+            this.labelAllyOne.Text = "Ally 1: None";
+            this.labelAllyOne.Click += new System.EventHandler(this.labelAllyOne_Click);
+            // 
+            // labelAllyTwo
+            // 
+            this.labelAllyTwo.AutoSize = true;
+            this.labelAllyTwo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelAllyTwo.Location = new System.Drawing.Point(3, 190);
+            this.labelAllyTwo.Name = "labelAllyTwo";
+            this.labelAllyTwo.Size = new System.Drawing.Size(201, 30);
+            this.labelAllyTwo.TabIndex = 5;
+            this.labelAllyTwo.Text = "Ally 2: None";
+            this.labelAllyTwo.Click += new System.EventHandler(this.labelAllyTwo_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(810, 450);
+            this.ClientSize = new System.Drawing.Size(850, 487);
             this.Controls.Add(this.tableLayoutPanel_MainWindow);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -125,11 +183,11 @@
             this.MinimizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "OOP3 Project - Rustam Zazai";
+            this.Text = "COSC2200 - Reggie Brown";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tableLayoutPanel_MainWindow.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            this.tableLayoutPanel_Sidebar.ResumeLayout(false);
+            this.tableLayoutPanel_Sidebar.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -137,10 +195,14 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_MainWindow;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Label AllyTwoLabel;
-        private System.Windows.Forms.Label AllyOneLabel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_Grid;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel_Sidebar;
+        private System.Windows.Forms.Label labelSectionTitle;
+        private System.Windows.Forms.Label labelSectionValue;
+        private System.Windows.Forms.Label labelPlayerStats;
+        private System.Windows.Forms.Label labelStatus;
+        private System.Windows.Forms.Label labelAllyOne;
+        private System.Windows.Forms.Label labelAllyTwo;
     }
 }
 
