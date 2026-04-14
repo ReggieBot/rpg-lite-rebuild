@@ -23,9 +23,7 @@ namespace Group_Project
 
         // === UI GRID ===
         private PictureBox[,] _tileBoxes = new PictureBox[7, 7];
-        private TableLayoutPanel _gridPanel;
-
-
+        
         public MainForm()
         {
             InitializeComponent();
@@ -60,6 +58,50 @@ namespace Group_Project
             //InitializeDialogs();
             //LoadCurrentSection();
 
+        }
+
+        private void InitializeGrid()
+        {
+            // clear controls associated with the grid panel
+            tableLayoutPanel_Grid.Controls.Clear();
+
+            for (int row = 0; row < 7; row++)
+            {
+                for (int col = 0; col < 7; col++)
+                {
+                    PictureBox tileBox = new PictureBox();
+
+                    tileBox.Dock = DockStyle.Fill;
+                    // Padding usually takes a single int for all sides (you can check definition)
+                    // but Winforms provides overloaded constructors (hence why I'm just using '1')
+                    tileBox.Margin = new Padding(1);
+                    // could definitely go with zoom size mode here as well
+                    tileBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    tileBox.BackColor = Color.DarkGray;
+
+                    // Point is a struct (readonly) that takes two ints, much easier than building my own
+                    // storing point as (row, col) to match the rest of the grid codebase,
+                    // even though Point is usually (x, y) and thus (col, row)
+                    tileBox.Tag = new Point(row, col);
+                    tileBox.Click += OnTileClicked;
+
+                    _tileBoxes[row, col] = tileBox;
+                    tableLayoutPanel_Grid.Controls.Add(tileBox, col, row);
+
+                }
+            }
+        }
+        
+        // click handler for tiles
+        private void OnTileClicked(object sender, EventArgs e)
+        {
+            // sender is what raises the event, as PictureBox tries to cast to a PictureBox safely
+            PictureBox clickedBox = sender as PictureBox;
+            Point position = (Point)clickedBox.Tag;
+            
+            int row = position.X;
+            int col = position.Y;
+            
         }
 
         /*
