@@ -54,9 +54,9 @@ namespace Group_Project
             }
 
             _currentState = GameState.Exploring;
-            //InitializeGrid();
+            InitializeGrid();
             //InitializeDialogs();
-            //LoadCurrentSection();
+            LoadCurrentSection();
 
         }
 
@@ -102,6 +102,34 @@ namespace Group_Project
             int row = position.X;
             int col = position.Y;
             
+        }
+        
+        // load current sections to tiles 
+        private void LoadCurrentSection()
+        {
+             GameMap currentMap = _maps[_currentMapIndex];
+             Section currentSection = currentMap.GetCurrentSection();
+             
+             // assign images to tiles based on the section's tile data
+             for (int row = 0; row < 7; row++)
+             {
+                 for (int col = 0; col < 7; col++)
+                 {
+                     PictureBox tileBox = _tileBoxes[row, col];
+                     Tile tile = currentSection.GetTile(row, col);
+
+                     if (tile != null)
+                     {
+                         tileBox.ImageLocation = tile.ImagePath;
+                         tileBox.Name = tile.EntityName;
+                     }
+                     else
+                     {
+                         tileBox.ImageLocation = null;
+                     }
+                 }
+             }
+
         }
 
         /*
