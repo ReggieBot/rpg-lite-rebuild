@@ -59,6 +59,7 @@
             // 
             // tableLayoutPanel_Grid
             // 
+            this.tableLayoutPanel_Grid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.tableLayoutPanel_Grid.ColumnCount = 7;
             this.tableLayoutPanel_Grid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
             this.tableLayoutPanel_Grid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
@@ -83,6 +84,7 @@
             // 
             // tableLayoutPanel_Sidebar
             // 
+            this.tableLayoutPanel_Sidebar.BackColor = System.Drawing.Color.SlateGray;
             this.tableLayoutPanel_Sidebar.ColumnCount = 1;
             this.tableLayoutPanel_Sidebar.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel_Sidebar.Controls.Add(this.labelSectionTitle, 0, 0);
@@ -110,6 +112,7 @@
             // 
             this.labelSectionTitle.AutoSize = true;
             this.labelSectionTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelSectionTitle.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSectionTitle.Location = new System.Drawing.Point(3, 0);
             this.labelSectionTitle.Name = "labelSectionTitle";
             this.labelSectionTitle.Size = new System.Drawing.Size(201, 30);
@@ -121,6 +124,7 @@
             // 
             this.labelSectionValue.AutoSize = true;
             this.labelSectionValue.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelSectionValue.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelSectionValue.Location = new System.Drawing.Point(3, 30);
             this.labelSectionValue.Name = "labelSectionValue";
             this.labelSectionValue.Size = new System.Drawing.Size(201, 30);
@@ -131,6 +135,8 @@
             // 
             this.labelPlayerStats.AutoSize = true;
             this.labelPlayerStats.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelPlayerStats.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPlayerStats.ForeColor = System.Drawing.Color.Maroon;
             this.labelPlayerStats.Location = new System.Drawing.Point(3, 60);
             this.labelPlayerStats.Name = "labelPlayerStats";
             this.labelPlayerStats.Size = new System.Drawing.Size(201, 50);
@@ -141,6 +147,8 @@
             // 
             this.labelStatus.AutoSize = true;
             this.labelStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelStatus.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelStatus.ForeColor = System.Drawing.Color.LimeGreen;
             this.labelStatus.Location = new System.Drawing.Point(3, 110);
             this.labelStatus.Name = "labelStatus";
             this.labelStatus.Size = new System.Drawing.Size(201, 50);
@@ -152,6 +160,7 @@
             // 
             this.labelAllyOne.AutoSize = true;
             this.labelAllyOne.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelAllyOne.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAllyOne.Location = new System.Drawing.Point(3, 160);
             this.labelAllyOne.Name = "labelAllyOne";
             this.labelAllyOne.Size = new System.Drawing.Size(201, 30);
@@ -163,6 +172,7 @@
             // 
             this.labelAllyTwo.AutoSize = true;
             this.labelAllyTwo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelAllyTwo.Font = new System.Drawing.Font("Stencil", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelAllyTwo.Location = new System.Drawing.Point(3, 190);
             this.labelAllyTwo.Name = "labelAllyTwo";
             this.labelAllyTwo.Size = new System.Drawing.Size(201, 30);
@@ -174,7 +184,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(850, 487);
             this.Controls.Add(this.tableLayoutPanel_MainWindow);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;

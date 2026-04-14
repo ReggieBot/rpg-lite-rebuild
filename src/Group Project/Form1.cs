@@ -109,6 +109,23 @@ namespace Group_Project
         {
              GameMap currentMap = _maps[_currentMapIndex];
              Section currentSection = currentMap.GetCurrentSection();
+             // keep the section label synced with the current section 
+             
+             string sectionName = null;
+             if (currentSection != null)
+             {
+                 sectionName = currentSection.SectionName;
+             }
+
+             if (string.IsNullOrWhiteSpace(sectionName))
+             {
+                 labelSectionValue.Text = "Unknown Section!";
+             }
+             else
+             {
+                 labelSectionValue.Text = sectionName;
+             }
+             
              
              // assign images to tiles based on the section's tile data
              for (int row = 0; row < 7; row++)
