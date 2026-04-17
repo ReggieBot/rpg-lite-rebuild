@@ -21,7 +21,7 @@ public class Tile
     // path to the image displayed on this tile in the grid
     public string ImagePath { get; set; }
     // for arrow tiles: the section index this arrow leads to. -1 means next map
-    public int DestinationSectionIndex { get; set; }
+    public string DestinationSectionId { get; set; }
 
     /// <summary>
     /// creates a new tile at the specified grid position
@@ -31,7 +31,7 @@ public class Tile
         Row = row; Column = column; Type = type;
         IsInteractable = type != TileType.Empty;
         InteractionFinished = false;
-        DestinationSectionIndex = -1;
+        DestinationSectionId = null;
     }
 
     /// <summary>
