@@ -20,20 +20,20 @@ namespace Group_Project
         private readonly Tile[,] _tiles;
 
         // construct new section
-        public section(string sectionId, string sectionName)
+        public Section(string sectionId, string sectionName)
         {
             SectionId = sectionId;
             SectionName = sectionName;
             _tiles = new Tile[GRID_SIZE, GRID_SIZE];
 
-            InitializeEmptyTiles;
+            InitializeEmptyTiles();
         }
 
         private void InitializeEmptyTiles()
         {
             for (int row = 0; row < GRID_SIZE; row++)
             {
-                for (int col = 0; col < GRID_SIZE; row++)
+                for (int col = 0; col < GRID_SIZE; col++)
                 {
                     _tiles[row, col] = new Tile(row, col, TileType.Empty);
                 }
@@ -45,7 +45,7 @@ namespace Group_Project
             return _tiles[row, col];
         }
 
-        public Tile SetTile(Tile tile)
+        public void SetTile(Tile tile)
         {
             _tiles[tile.Row, tile.Column] = tile;
         }
