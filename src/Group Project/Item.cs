@@ -10,7 +10,7 @@ namespace Group_Project
     /// represents a collectible or usable item in the game
     /// items can be picked up from tiles, gifted to NPCs, or used during combat
     /// </summary>
-    public class Item
+    public class Item : IMapEntity
     {
         // the display name of the item (e.g. "First Aid Spray", "Siegbrau")
         public string Name { get; set; }

@@ -10,7 +10,7 @@ namespace Group_Project
     /// represents a non-combat NPC that the player can talk to, gift items to, and recruit
     /// does not extend Organism because friendly NPCs cannot be attacked or die
     /// </summary>
-    public class FriendlyNPC
+    public class FriendlyNPC : IMapEntity
     {
         // the NPC's display name
         public string Name { get; set; }

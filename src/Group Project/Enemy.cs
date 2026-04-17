@@ -10,7 +10,7 @@ namespace Group_Project
     /// represents a hostile NPC that the player can encounter and fight
     /// inherits from Organism. Each enemy has unique stats, sounds, visuals, and pre-combat dialog
     /// </summary>
-    public class Enemy : Organism
+    public class Enemy : Organism, IMapEntity
     {
         // the amount of experience points awarded to the player upon defeating this enemy
         public float XPReward { get; set; }
