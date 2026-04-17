@@ -17,7 +17,7 @@ public class Tile
     // whether the tile's event has already occurred
     public bool InteractionFinished { get; set; }
     // name of the entity on this tile, used to look up the object from the map's lists
-    public string EntityName { get; set; }
+    public IMapEntity Entity { get; set; }
     // path to the image displayed on this tile in the grid
     public string ImagePath { get; set; }
     // for arrow tiles: the section index this arrow leads to. -1 means next map
