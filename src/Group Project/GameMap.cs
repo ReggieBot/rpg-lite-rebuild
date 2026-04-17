@@ -70,10 +70,6 @@ namespace Group_Project
 
         // the total number of sections in this map
         public int SectionCount => _sections.Count;
-
-        public Enemy FindEnemy(string name) => MapHostiles.Find(e => e.Name == name);
-        public FriendlyNPC FindNPC(string name) => MapNPCs.Find(n => n.Name == name);
-        public Item FindItem(string name) => MapItems.Find(i => i.Name == name);
     }
 
 }

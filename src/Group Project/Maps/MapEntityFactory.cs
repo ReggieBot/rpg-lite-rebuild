@@ -31,12 +31,12 @@ namespace Group_Project {
             int row,
             int col,
             TileType type,
-            IMapEntity entityName = null,
+            IMapEntity entity = null,
             string imagePath = null,
             string destinationSectionId = null)
         {
 
-            Tile tile = CreateTile(row, col, type, entityName, imagePath, destinationSectionId);
+            Tile tile = CreateTile(row, col, type, entity, imagePath, destinationSectionId);
             section.SetTile(tile);
         }
 

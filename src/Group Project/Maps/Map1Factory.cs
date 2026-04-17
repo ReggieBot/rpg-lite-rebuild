@@ -132,7 +132,7 @@ namespace Group_Project {
                 @"assets\img\Npcs\Hostiles\Regenerator\Regenerator_SpriteIcon.png");
 
             // [INVENTORY]
-            MapEntityFactory.AddTile(m1_Section1, 3, 3, TileType.Inventory,
+            MapEntityFactory.AddTile(m1_Section1, 3, 3, TileType.Inventory, null,
                 "PLACEHOLDER");
 
             // [ARROW] leads to Section 2
@@ -156,7 +156,7 @@ namespace Group_Project {
                 @"assets\img\Npcs\Hostiles\BigDaddy\BigDaddy_SpriteIcon.png");
 
             // [INVENTORY]
-            MapEntityFactory.AddTile(m1_Section2, 3, 3, TileType.Inventory,
+            MapEntityFactory.AddTile(m1_Section2, 3, 3, TileType.Inventory, null,
                 "PLACEHOLDER");
 
             // [ARROW] leads back to Section 1
@@ -176,7 +176,7 @@ namespace Group_Project {
                 @"assets\img\Npcs\RecruitableNpcs\Solaire\Solaire_SpriteIcon.png");
 
             // [INVENTORY]
-            MapEntityFactory.AddTile(m1_Section3, 2, 0, TileType.Inventory,
+            MapEntityFactory.AddTile(m1_Section3, 2, 0, TileType.Inventory, null,
                 "PLACEHOLDER");
 
             // [BOSS] Nemesis

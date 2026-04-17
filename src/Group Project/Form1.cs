@@ -138,7 +138,14 @@ namespace Group_Project
                      if (tile != null)
                      {
                          tileBox.ImageLocation = tile.ImagePath;
-                         tileBox.Name = tile.EntityName;
+                         if (tile.Entity != null)
+                         {
+                            tileBox.Name = tile.Entity.Name;
+                         }
+                         else
+                         {
+                            tileBox.Name = tile.Type.ToString();
+                        }
                      }
                      else
                      {
