@@ -12,43 +12,57 @@ namespace Group_Project
     /// </summary>
     public class GameMap
     {
-        private List<Section> _sections;
+        // let map keep section IDs instead of discarding them after LoadMap()
+        private Dictionary<string, Section> _sections;
         public List<Enemy> MapHostiles { get; set; }
         public string MapName { get; set; }
         public List<Item> MapItems { get; set; }
         public List<FriendlyNPC> MapNPCs { get; set; }
-        public int CurrentSectionIndex { get; set; }
+        public string CurrentSectionId { get; set; }
 
         public GameMap(string mapName)
         {
-            MapName = mapName; _sections = new List<Section>();
-            MapHostiles = new List<Enemy>(); MapItems = new List<Item>();
-            MapNPCs = new List<FriendlyNPC>(); CurrentSectionIndex = 0;
+            MapName = mapName;
+            _sections = new Dictionary<string, Section>();
+            MapHostiles = new List<Enemy>();
+            MapItems = new List<Item>();
+            MapNPCs = new List<FriendlyNPC>();
+            CurrentSectionId = null;
         }
 
         /// <summary>
         /// loads sections into the map from a dictionary
+        /// the dictionary keys are the section IDs, which are used for navigation and lookups
+        /// if CurrentSectionId is null and main exists, initialize to 'main'
         /// </summary>
         public void LoadMap(Dictionary<string, Section> sections)
         {
             _sections.Clear();
-            foreach (var kvp in sections) _sections.Add(kvp.Value);
+            foreach (var kvp in sections)
+            {
+                _sections.Add(kvp.Key, kvp.Value);
+            }
+
+            if (CurrentSectionId == null && _sections.ContainsKey("main"))
+            {
+                CurrentSectionId = "main";
+            }
         }
 
         /// <summary>
         /// returns the section the player is currently in
         /// </summary>
-        public Section GetCurrentSection() => _sections[CurrentSectionIndex];
+        public Section GetCurrentSection() => _sections[CurrentSectionId];
 
         /// <summary>
-        /// navigates to a specific section by index
+        /// navigates to a specific section by id
         /// returns true if valid, false if out of range
         /// </summary>
-        public bool GoToSection(int sectionIndex)
+        public bool GoToSection(string sectionId)
         {
-            if (sectionIndex >= 0 && sectionIndex < _sections.Count)
+            if (_sections.ContainsKey(sectionId))
             {
-                CurrentSectionIndex = sectionIndex;
+                CurrentSectionId = sectionId;
                 return true;
             }
             return false;
