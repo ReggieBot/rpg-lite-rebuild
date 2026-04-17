@@ -116,23 +116,23 @@ namespace Group_Project {
 
 
             // [ITEM] First Aid Spray
-            MapEntityFactory.AddTile(m1_Section1, 5, 5, TileType.Item, "First Aid Spray",
+            MapEntityFactory.AddTile(m1_Section1, 5, 5, TileType.Item, firstAidSpray,
                 @"assets\img\MapItems\assets_img_MapItems_FirstAidSpray.png");
 
             // [NPC] FireKeeper
-            MapEntityFactory.AddTile(m1_Section1, 3, 5, TileType.LevelUp, "FireKeeper",
+            MapEntityFactory.AddTile(m1_Section1, 3, 5, TileType.LevelUp, fireKeeper,
                 @"assets\img\Npcs\NPCs\FireKeeper\FireKeeper_SpriteIcon.png");
 
             // [ENEMY] Dr. Salvador
-            MapEntityFactory.AddTile(m1_Section1, 1, 2, TileType.Enemy, "DrSalvador",
+            MapEntityFactory.AddTile(m1_Section1, 1, 2, TileType.Enemy, drSalvador,
                 @"assets\img\Npcs\Hostiles\DrSalvador\DrSalvador_SpriteIcon.jpg");
 
             // [ENEMY] Regenerator
-            MapEntityFactory.AddTile(m1_Section1, 4, 1, TileType.Enemy, "Regenerator",
+            MapEntityFactory.AddTile(m1_Section1, 4, 1, TileType.Enemy, regenerator,
                 @"assets\img\Npcs\Hostiles\Regenerator\Regenerator_SpriteIcon.png");
 
             // [INVENTORY]
-            MapEntityFactory.AddTile(m1_Section1, 3, 3, TileType.Inventory, "Inventory",
+            MapEntityFactory.AddTile(m1_Section1, 3, 3, TileType.Inventory,
                 "PLACEHOLDER");
 
             // [ARROW] leads to Section 2
@@ -144,19 +144,19 @@ namespace Group_Project {
             Section m1_Section2 = new Section("left", "Map 1 - Section 2");
 
             // [NPC] Siegward
-            MapEntityFactory.AddTile(m1_Section2, 2, 4, TileType.FriendlyNPC, "Siegward",
+            MapEntityFactory.AddTile(m1_Section2, 2, 4, TileType.FriendlyNPC, siegward,
                 @"assets\img\Npcs\RecruitableNpcs\Siegward\Siegward_SpriteIcon.jpg");
 
             // [ITEM] Siegbrau
-            MapEntityFactory.AddTile(m1_Section2, 5, 1, TileType.Item, "Siegbrau",
+            MapEntityFactory.AddTile(m1_Section2, 5, 1, TileType.Item, siegbrau,
                 "PLACEHOLDER PATHING");
 
             // [ENEMY] BigDaddy
-            MapEntityFactory.AddTile(m1_Section2, 1, 1, TileType.Enemy, "BigDaddy",
+            MapEntityFactory.AddTile(m1_Section2, 1, 1, TileType.Enemy, bigDaddy,
                 @"assets\img\Npcs\Hostiles\BigDaddy\BigDaddy_SpriteIcon.png");
 
             // [INVENTORY]
-            MapEntityFactory.AddTile(m1_Section2, 3, 3, TileType.Inventory, "Inventory",
+            MapEntityFactory.AddTile(m1_Section2, 3, 3, TileType.Inventory,
                 "PLACEHOLDER");
 
             // [ARROW] leads back to Section 1
@@ -172,15 +172,15 @@ namespace Group_Project {
             Section m1_Section3 = new Section("up", "Map 1 - Section 3");
 
             // [NPC] Solaire
-            MapEntityFactory.AddTile(m1_Section3, 6, 2, TileType.FriendlyNPC, "Solaire",
+            MapEntityFactory.AddTile(m1_Section3, 6, 2, TileType.FriendlyNPC, solaire,
                 @"assets\img\Npcs\RecruitableNpcs\Solaire\Solaire_SpriteIcon.png");
 
             // [INVENTORY]
-            MapEntityFactory.AddTile(m1_Section3, 2, 0, TileType.Inventory, "Inventory",
+            MapEntityFactory.AddTile(m1_Section3, 2, 0, TileType.Inventory,
                 "PLACEHOLDER");
 
             // [BOSS] Nemesis
-            MapEntityFactory.AddTile(m1_Section3, 1, 5, TileType.Boss, "Nemesis",
+            MapEntityFactory.AddTile(m1_Section3, 1, 5, TileType.Boss, nemesis,
                 @"assets\img\Npcs\Hostiles\Nemesis\Nemesis_SpriteIcon.png");
 
             // [ARROW] leads back to Section 2

@@ -12,11 +12,11 @@ namespace Group_Project {
     {
 
         // Create new tile instance with the specified properties
-        internal static Tile CreateTile(int row, int col, TileType type, string entityName = null,
+        internal static Tile CreateTile(int row, int col, TileType type, IMapEntity entity,
             string imagePath = null, string destinationSectionId = null)
         {
             Tile tile = new Tile(row, col, type);
-            tile.EntityName = entityName;
+            tile.Entity = entity;
             tile.ImagePath = imagePath;
             tile.DestinationSectionId = destinationSectionId;
             return tile;
@@ -31,7 +31,7 @@ namespace Group_Project {
             int row,
             int col,
             TileType type,
-            string entityName = null,
+            IMapEntity entityName = null,
             string imagePath = null,
             string destinationSectionId = null)
         {
