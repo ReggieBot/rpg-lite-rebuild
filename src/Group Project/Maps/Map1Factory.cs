@@ -112,28 +112,8 @@ namespace Group_Project {
             map1.MapItems.Add(siegbrau);
 
             // Section 1 scaffolding
-            Section m1_Section1 = new Section("Map 1 - Section 1");
+            Section m1_Section1 = new Section("main", "Map 1 - Section 1");
 
-            /*
-
-            From what I can see, the 'Section' constructor creates an empty dictionary.
-            First we need to instantiate a tile, the tile constructor expects the following parameters:
-            - Row
-            - Column
-            - TileType (enum in TileType.cs)
-
-            Once instantiated, we need to add that tile to the sections dictionary
-            The dictionary doesn't expect row/column from the looks of it. It expects a single tile position
-            The tile position is calculated using the following formula (Row * 7 + Col), assuming 0-based indexing.
-
-            That calculated location becomes the Section dictionary key, and the value is the Tile object we created.
-            So we are storing tile location twice, in the tile itself, and in the section dictionary.
-            Though they both use different formats of location data
-
-            Whatever we don't explicitly add to the section's tile dict will default to null.
-            I'm assuming we are going to treat null tiles as empty spaces that are walkable, but have no interaction.
-
-             */
 
             // [ITEM] First Aid Spray
             MapEntityFactory.AddTile(m1_Section1, 5, 5, TileType.Item, "First Aid Spray",
@@ -157,11 +137,11 @@ namespace Group_Project {
 
             // [ARROW] leads to Section 2
             MapEntityFactory.AddTile(m1_Section1, 3, 0, TileType.ArrowLeft,
-                imagePath: "PLACEHOLDER", destination: 1); // index of LeftSection
+                imagePath: "PLACEHOLDER", destinationSectionId: "left"); // index of LeftSection
 
 
             // Section 2 scaffolding
-            Section m1_Section2 = new Section("Map 1 - Section 2");
+            Section m1_Section2 = new Section("left", "Map 1 - Section 2");
 
             // [NPC] Siegward
             MapEntityFactory.AddTile(m1_Section2, 2, 4, TileType.FriendlyNPC, "Siegward",
@@ -181,15 +161,15 @@ namespace Group_Project {
 
             // [ARROW] leads back to Section 1
             MapEntityFactory.AddTile(m1_Section2, 3, 6, TileType.ArrowRight,
-                imagePath: "PLACEHOLDER", destination: 0); // index of MainSection
+                imagePath: "PLACEHOLDER", destinationSectionId: "main"); // index of MainSection
 
             // [ARROW] leads to Section 3
             MapEntityFactory.AddTile(m1_Section2, 0, 0, TileType.ArrowUp,
-                imagePath: "PLACEHOLDER", destination: 2); // index of section 3
+                imagePath: "PLACEHOLDER", destinationSectionId: "up"); // index of section 3
 
 
             // section 3 scaffolding
-            Section m1_Section3 = new Section("Map 1 - Section 3");
+            Section m1_Section3 = new Section("up", "Map 1 - Section 3");
 
             // [NPC] Solaire
             MapEntityFactory.AddTile(m1_Section3, 6, 2, TileType.FriendlyNPC, "Solaire",
@@ -205,7 +185,7 @@ namespace Group_Project {
 
             // [ARROW] leads back to Section 2
             MapEntityFactory.AddTile(m1_Section3, 6, 0, TileType.ArrowDown,
-                imagePath: "PLACEHOLDER", destination: 1); //
+                imagePath: "PLACEHOLDER", destinationSectionId: "left"); //
 
 
 

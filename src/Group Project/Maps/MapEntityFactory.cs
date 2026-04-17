@@ -13,22 +13,31 @@ namespace Group_Project {
 
         // Create new tile instance with the specified properties
         internal static Tile CreateTile(int row, int col, TileType type, string entityName = null,
-            string imagePath = null, int destination = -1)
+            string imagePath = null, string destinationSectionId = null)
         {
             Tile tile = new Tile(row, col, type);
             tile.EntityName = entityName;
             tile.ImagePath = imagePath;
-            tile.DestinationSectionIndex = destination;
+            tile.DestinationSectionId = destinationSectionId;
             return tile;
         }
 
         // Add tiles to section
-        internal static void AddTile(Section section, int row, int col, TileType type, string entityName = null,
-            string imagePath = null, int destination = -1)
+        // Section now owns tile placement through its 2D grid
+        // section.SetTile(tile) now tells 'Section' to place it
+        // Factory now knows less about section storage and relies on added abstraction
+        internal static void AddTile(
+            Section section,
+            int row,
+            int col,
+            TileType type,
+            string entityName = null,
+            string imagePath = null,
+            string destinationSectionId = null)
         {
-            int index = row * 7 + col;
-            Tile tile = CreateTile(row, col, type, entityName, imagePath, destination);
-            section.Tiles.Add(index, tile);
+
+            Tile tile = CreateTile(row, col, type, entityName, imagePath, destinationSectionId);
+            section.SetTile(tile);
         }
 
         // Create Enemy instance
