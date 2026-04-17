@@ -9,7 +9,6 @@ namespace Group_Project
     /// <summary>
     /// Represents a 7x7 grid of tiles
     /// </summary>
-
     public class Section
     {
         public const int GRID_SIZE = 7;
@@ -27,10 +26,28 @@ namespace Group_Project
             SectionName = sectionName;
             _tiles = new Tile[GRID_SIZE, GRID_SIZE];
 
-            // initialize each tile
+            InitializeEmptyTiles;
+        }
+
+        private void InitializeEmptyTiles()
+        {
+            for (int row = 0; row < GRID_SIZE; row++)
+            {
+                for (int col = 0; col < GRID_SIZE; row++)
+                {
+                    _tiles[row, col] = new Tile(row, col, TileType.Empty);
+                }
+            }
+        }
+
+        public Tile GetTile(int row, int col)
+        {
+            return _tiles[row, col];
+        }
+
+        public Tile SetTile(Tile tile)
+        {
+            _tiles[tile.Row, tile.Column] = tile;
         }
     }
-
-
-
 }
