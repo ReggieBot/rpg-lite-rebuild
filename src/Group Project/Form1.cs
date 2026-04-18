@@ -103,57 +103,57 @@ namespace Group_Project
             int col = position.Y;
             
         }
-        
+
         // load current sections to tiles 
         private void LoadCurrentSection()
         {
-             GameMap currentMap = _maps[_currentMapIndex];
-             Section currentSection = currentMap.GetCurrentSection();
-             // keep the section label synced with the current section 
-             
-             string sectionName = null;
-             if (currentSection != null)
-             {
-                 sectionName = currentSection.SectionName;
-             }
+            GameMap currentMap = _maps[_currentMapIndex];
+            Section currentSection = currentMap.GetCurrentSection();
+            // keep the section label synced with the current section
 
-             if (string.IsNullOrWhiteSpace(sectionName))
-             {
-                 labelSectionValue.Text = "Unknown Section!";
-             }
-             else
-             {
-                 labelSectionValue.Text = sectionName;
-             }
-             
-             
-             // assign images to tiles based on the section's tile data
-             for (int row = 0; row < 7; row++)
-             {
-                 for (int col = 0; col < 7; col++)
-                 {
-                     PictureBox tileBox = _tileBoxes[row, col];
-                     Tile tile = currentSection.GetTile(row, col);
+            string sectionName = null;
+            if (currentSection != null)
+            {
+                sectionName = currentSection.SectionName;
+            }
 
-                     if (tile != null)
-                     {
-                         tileBox.ImageLocation = tile.ImagePath;
-                         if (tile.Entity != null)
-                         {
-                            tileBox.Name = tile.Entity.Name;
-                         }
-                         else
-                         {
-                            tileBox.Name = tile.Type.ToString();
-                        }
-                     }
-                     else
-                     {
-                         tileBox.ImageLocation = null;
-                     }
-                 }
-             }
+            if (string.IsNullOrWhiteSpace(sectionName))
+            {
+                labelSectionValue.Text = "Unknown Section!";
+            }
+            else
+            {
+                labelSectionValue.Text = sectionName;
+            }
 
+            // assign images to tiles based on the section's tile data
+            for (int row = 0; row < 7; row++)
+            {
+                for (int col = 0; col < 7; col++)
+                {
+                    PictureBox tileBox = _tileBoxes[row, col];
+                    Tile tile = currentSection.GetTile(row, col);
+
+                    if (tile == null)
+                    {
+                        tileBox.ImageLocation = null;
+                        tileBox.Name = string.Empty;
+                        // continue to next iteration, so we don't access the tile's null property
+                        continue;
+                    }
+
+                    tileBox.ImageLocation = tile.ImagePath;
+
+                    if (tile.Entity != null)
+                    {
+                        tileBox.Name = tile.Entity.Name;
+                    }
+                    else
+                    {
+                        tileBox.Name = tile.Type.ToString();
+                    }
+                }
+            }
         }
 
         /*

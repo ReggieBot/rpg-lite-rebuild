@@ -19,6 +19,6 @@ namespace Group_Project
 {
     public interface IMapEntity
     {
-        string name { get; }
+        string Name { get; }
     }
 }
