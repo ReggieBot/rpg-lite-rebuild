@@ -95,13 +95,17 @@ namespace Group_Project
         // click handler for tiles
         private void OnTileClicked(object sender, EventArgs e)
         {
-            // sender is what raises the event, as PictureBox tries to cast to a PictureBox safely
-            PictureBox clickedBox = sender as PictureBox;
-            Point position = (Point)clickedBox.Tag;
-            
-            int row = position.X;
-            int col = position.Y;
-            
+            // only continue if the click came from a picturebox
+            // and its Tag contains the stored grid coordinates
+            if (!(sender is PictureBox clickedBox) || !(clickedBox.Tag is Point position))
+            {
+                return;
+            }
+
+            // Point.X stores row and Point.Y stores column
+            // backwards, I know...
+            int row = Position.X;
+            int column = position.Y;
         }
 
         // load current sections to tiles 
