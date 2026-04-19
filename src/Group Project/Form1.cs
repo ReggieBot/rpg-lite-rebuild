@@ -104,8 +104,49 @@ namespace Group_Project
 
             // Point.X stores row and Point.Y stores column
             // backwards, I know...
-            int row = Position.X;
+            int row = position.X;
             int column = position.Y;
+
+            // Get the tile that was clicked from the current section
+            GameMap currentMap = _maps[_currentMapIndex];
+            Section currentSection = currentMap.GetCurrentSection();
+            Tile tile = currentSection.GetTile(row, column);
+
+            // ignore tiles that are empty/disabled/completed
+            TileType interactionType = tile.LoadInteraction();
+            if (interactionType == TileType.Empty)
+            {
+                return;
+            }
+
+            switch (interactionType)
+            {
+                case TileType.ArrowLeft:
+                case TileType.ArrowRight:
+                case TileType.ArrowDown:
+                case TileType.ArrowUp:
+                    // move to destination section, redraw board
+                    if (currentMap.GoToSection(tile.DestinationSectionId))
+                    {
+                        LoadCurrentSection();
+                    }
+                    break;
+
+                case TileType.Item:
+                    // try to cast the tiles entity to an item (safely)
+                    // Entity is now an interface that can contain enemy, item, or FriendlyNpc
+                    Item item = tile.Entity as Item;
+                    if (item == null)
+                    {
+                        return;
+                    }
+
+                    _player.AddItem(item);
+                    tile.CompleteInteraction();
+                    LoadCurrentSection();
+                    break;
+
+            }
         }
 
         // load current sections to tiles 
