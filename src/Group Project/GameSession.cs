@@ -41,5 +41,30 @@ namespace Group_Project
             _currentMapIndex = currentMapIndex;
             CurrentState = GameState.Exploring;
         }
+
+        // GameSession uses CurrentMap and CurrentSection, which don't belong to Form1 anymore
+        // so the logic for moving to the next section or map belongs here too
+        public bool TryMoveToTileDestination(int row, int column)
+        {
+            Tile tile = CurrentSection.GetTile(row, column);
+            if (tile == null)
+            {
+                return false;
+            }
+
+            // get tile type from Tile.cs
+            // LoadInteraction returns TileType.Empty for non-interactable and InteractionFinished tiles
+            TileType interactionType = tile.LoadInteraction();
+            if (interactionType != TileType.ArrowLeft &&
+                interactionType != TileType.ArrowRight &&
+                interactionType != TileType.ArrowUp &&
+                interactionType != TileType.ArrowDown)
+            {
+                return false;
+            }
+
+            // if the tile is an arrow, use the tile's DestinationSectionId to move to the next section
+            return CurrentMap.GoToSection(tile.DestinationSectionId);
+        }
     }
 }

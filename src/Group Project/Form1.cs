@@ -114,8 +114,14 @@ namespace Group_Project
             int row = position.X;
             int column = position.Y;
 
-            // Get the tile that was clicked from the current section
-            GameMap currentMap = _session.CurrentMap;
+            // let GameSession handle arrow movement
+            if (_session.TryMoveToTileDestination(row, column))
+            {
+                LoadCurrentSection();
+                return;
+            }
+
+            // still needed for non-arrow tile behaviour (for now)
             Section currentSection = _session.CurrentSection;
             Tile tile = currentSection.GetTile(row, column);
 
@@ -126,33 +132,19 @@ namespace Group_Project
                 return;
             }
 
-            switch (interactionType)
+            // handle Item tiles
+            if (interactionType == TileType.Item)
             {
-                case TileType.ArrowLeft:
-                case TileType.ArrowRight:
-                case TileType.ArrowDown:
-                case TileType.ArrowUp:
-                    // move to destination section, redraw board
-                    if (currentMap.GoToSection(tile.DestinationSectionId))
-                    {
-                        LoadCurrentSection();
-                    }
-                    break;
-
-                case TileType.Item:
-                    // try to cast the tiles entity to an item (safely)
-                    // Entity is now an interface that can contain enemy, item, or FriendlyNpc
-                    Item item = tile.Entity as Item;
-                    if (item == null)
-                    {
-                        return;
-                    }
-
-                    _session.Player.AddItem(item);
-                    tile.CompleteInteraction();
-                    LoadCurrentSection();
-                    break;
-
+                // try to cast safely to Item
+                Item item = tile.Entity as Item;
+                if (item == null)
+                {
+                    return;
+                }
++
+                _session.Player.AddItem(item);
+                tile.CompleteInteraction();
+                LoadCurrentSection();
             }
         }
 
