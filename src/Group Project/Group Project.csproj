@@ -90,6 +90,7 @@
     <Compile Include="Maps\Map2Factory.cs" />
     <Compile Include="Maps\Map3Factory.cs" />
     <Compile Include="IMapEntity.cs" />
+    <Compile Include="GameSession.cs" />
     <Compile Include="FriendlyNpc.cs" />
     <Compile Include="GameMap.cs" />
     <Compile Include="GameState.cs" />
