@@ -18,8 +18,9 @@ namespace Group_Project
         private List<GameMap> _maps;
         private int _currentMapIndex;
         private GameStateManager _saveManager;
-        private GameState _currentState;
         private Random _rng = new Random();
+
+        private GameSession _session;
 
         // === UI GRID ===
         private PictureBox[,] _tileBoxes = new PictureBox[7, 7];
@@ -42,18 +43,24 @@ namespace Group_Project
             SaveData saveData = _saveManager.LoadGame();
             if (saveData != null)
             {
-              //  _player = RestorePlayerFromSave(saveData);
+                // TODO: fix the damn save restore
+                _player = new Player("Reggie", 100, 15);
+
+                // find what map the save points to
                 _currentMapIndex = _maps.FindIndex(
                     m => m.MapName == saveData.MapProgress.MapName);
-                if (_currentMapIndex < 0) _currentMapIndex = 0;
+                if (_currentMapIndex < 0)
+                {
+                    _currentMapIndex = 0;
+                }
             }
             else
             {
-                _player = new Player("Hero", 100, 15);
+                _player = new Player("Reggie", 100, 15);
                 _currentMapIndex = 0;
             }
 
-            _currentState = GameState.Exploring;
+            _session = new GameSession(_player, _maps, _currentMapIndex);
             InitializeGrid();
             //InitializeDialogs();
             LoadCurrentSection();
@@ -108,8 +115,8 @@ namespace Group_Project
             int column = position.Y;
 
             // Get the tile that was clicked from the current section
-            GameMap currentMap = _maps[_currentMapIndex];
-            Section currentSection = currentMap.GetCurrentSection();
+            GameMap currentMap = _session.CurrentMap;
+            Section currentSection = _session.CurrentSection;
             Tile tile = currentSection.GetTile(row, column);
 
             // ignore tiles that are empty/disabled/completed
@@ -141,7 +148,7 @@ namespace Group_Project
                         return;
                     }
 
-                    _player.AddItem(item);
+                    _session.Player.AddItem(item);
                     tile.CompleteInteraction();
                     LoadCurrentSection();
                     break;
@@ -152,8 +159,8 @@ namespace Group_Project
         // load current sections to tiles 
         private void LoadCurrentSection()
         {
-            GameMap currentMap = _maps[_currentMapIndex];
-            Section currentSection = currentMap.GetCurrentSection();
+            GameMap currentMap = _session.CurrentMap;
+            Section currentSection = _session.CurrentSection;
             // keep the section label synced with the current section
 
             string sectionName = null;
