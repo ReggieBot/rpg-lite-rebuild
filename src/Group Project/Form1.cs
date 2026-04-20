@@ -114,18 +114,10 @@ namespace Group_Project
             int row = position.X;
             int column = position.Y;
 
-            // let GameSession handle arrow movement
-            if (_session.TryMoveToTileDestination(row, column))
+            // let GameSession decide what click does
+            if (_session.TryHandleTileClick(row, column))
             {
                 LoadCurrentSection();
-                return;
-            }
-
-            // let GameSession handle item pickup
-            if (_session.TryPickUpItem(row, column))
-            {
-                LoadCurrentSection();
-                return;
             }
         }
 
