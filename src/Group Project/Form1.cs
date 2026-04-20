@@ -121,37 +121,17 @@ namespace Group_Project
                 return;
             }
 
-            // still needed for non-arrow tile behaviour (for now)
-            Section currentSection = _session.CurrentSection;
-            Tile tile = currentSection.GetTile(row, column);
-
-            // ignore tiles that are empty/disabled/completed
-            TileType interactionType = tile.LoadInteraction();
-            if (interactionType == TileType.Empty)
+            // let GameSession handle item pickup
+            if (_session.TryPickUpItem(row, column))
             {
-                return;
-            }
-
-            // handle Item tiles
-            if (interactionType == TileType.Item)
-            {
-                // try to cast safely to Item
-                Item item = tile.Entity as Item;
-                if (item == null)
-                {
-                    return;
-                }
-+
-                _session.Player.AddItem(item);
-                tile.CompleteInteraction();
                 LoadCurrentSection();
+                return;
             }
         }
 
         // load current sections to tiles 
         private void LoadCurrentSection()
         {
-            GameMap currentMap = _session.CurrentMap;
             Section currentSection = _session.CurrentSection;
             // keep the section label synced with the current section
 
