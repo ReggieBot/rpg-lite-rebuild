@@ -14,9 +14,6 @@ namespace Group_Project
     public partial class MainForm : Form
     {
         // === CORE GAME OBJECTS ===
-        private Player _player;
-        private List<GameMap> _maps;
-        private int _currentMapIndex;
         private GameStateManager _saveManager;
         private Random _rng = new Random();
 
@@ -37,27 +34,31 @@ namespace Group_Project
         /// </summary>
         private void InitializeGame()
         {
+            Player player;
+            List<GameMap> maps;
+            int currentMapIndex;
+
             _saveManager = new GameStateManager();
-            _maps = InitializeAllMaps();
+            maps = InitializeAllMaps();
 
             SaveData saveData = _saveManager.LoadGame();
             if (saveData != null)
             {
                 // TODO: fix the damn save restore
-                _player = new Player("Reggie", 100, 15);
+                player = new Player("Reggie", 100, 15);
 
                 // find what map the save points to
-                _currentMapIndex = _maps.FindIndex(
+                currentMapIndex = maps.FindIndex(
                     m => m.MapName == saveData.MapProgress.MapName);
-                if (_currentMapIndex < 0)
+                if (currentMapIndex < 0)
                 {
-                    _currentMapIndex = 0;
+                    currentMapIndex = 0;
                 }
             }
             else
             {
-                _player = new Player("Reggie", 100, 15);
-                _currentMapIndex = 0;
+                player = new Player("Reggie", 100, 15);
+                currentMapIndex = 0;
             }
 
             _session = new GameSession(_player, _maps, _currentMapIndex);
