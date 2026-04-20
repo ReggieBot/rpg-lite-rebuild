@@ -12,6 +12,12 @@ namespace Group_Project
         public Player Player { get; private set; }
         public GameState CurrentState { get; set; }
 
+
+        // player's current location on active board section
+        // Player.cs shouldn't own this as it's directly related to current board state
+        public int PlayerRow { get; private set; }
+        public int PlayerColumn { get; private set; }
+
         // expose active map in one place
         // CurrentMap exposes the sessions currently selected map
         // `get` belongs to a property not a method, so it can be accessed like a field
@@ -40,6 +46,41 @@ namespace Group_Project
             _maps = maps;
             _currentMapIndex = currentMapIndex;
             CurrentState = GameState.Exploring;
+
+            SetPlayerSpawnForCurrentSection();
+        }
+
+        private void SetPlayerSpawnForCurrentSection()
+        {
+            PlayerRow = 6;
+            PlayerColumn = 3;
+        }
+
+        // prevent accidental access to tiles outside board
+        private bool isInsideGrid(int row, int column)
+        {
+            if (row < 0 || row >= Section.GRID_SIZE)
+            {
+                return false;
+            }
+
+            if (column < 0 || column >= Section.GRID_SIZE)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        // make sure player is on tile
+        public bool IsPlayerOnTile(int row, int column)
+        {
+            if (PlayerRow == row && PlayerColumn == column)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         // GameSession uses CurrentMap and CurrentSection, which don't belong to Form1 anymore
