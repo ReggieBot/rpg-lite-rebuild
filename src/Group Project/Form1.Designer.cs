@@ -118,7 +118,6 @@
             this.labelSectionTitle.Size = new System.Drawing.Size(201, 30);
             this.labelSectionTitle.TabIndex = 0;
             this.labelSectionTitle.Text = "Section";
-            this.labelSectionTitle.Click += new System.EventHandler(this.label1_Click);
             // 
             // labelSectionValue
             // 
@@ -154,7 +153,6 @@
             this.labelStatus.Size = new System.Drawing.Size(201, 50);
             this.labelStatus.TabIndex = 3;
             this.labelStatus.Text = "Ready";
-            this.labelStatus.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // labelAllyOne
             // 
@@ -166,7 +164,6 @@
             this.labelAllyOne.Size = new System.Drawing.Size(201, 30);
             this.labelAllyOne.TabIndex = 4;
             this.labelAllyOne.Text = "Ally 1: None";
-            this.labelAllyOne.Click += new System.EventHandler(this.labelAllyOne_Click);
             // 
             // labelAllyTwo
             // 
@@ -178,7 +175,6 @@
             this.labelAllyTwo.Size = new System.Drawing.Size(201, 30);
             this.labelAllyTwo.TabIndex = 5;
             this.labelAllyTwo.Text = "Ally 2: None";
-            this.labelAllyTwo.Click += new System.EventHandler(this.labelAllyTwo_Click);
             // 
             // MainForm
             // 
@@ -194,7 +190,6 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "COSC2200 - Reggie Brown";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.tableLayoutPanel_MainWindow.ResumeLayout(false);
             this.tableLayoutPanel_Sidebar.ResumeLayout(false);
             this.tableLayoutPanel_Sidebar.PerformLayout();

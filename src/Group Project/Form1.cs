@@ -14,7 +14,6 @@ namespace Group_Project
     public partial class MainForm : Form
     {
         // === CORE GAME OBJECTS ===
-        private GameStateManager _saveManager;
         private GameSession _session;
 
         // === UI GRID ===
@@ -32,38 +31,12 @@ namespace Group_Project
         /// </summary>
         private void InitializeGame()
         {
-            Player player;
-            List<GameMap> maps;
-            int currentMapIndex;
-
-            _saveManager = new GameStateManager();
-            maps = InitializeAllMaps();
-
-            SaveData saveData = _saveManager.LoadGame();
-            if (saveData != null)
-            {
-                // TODO: fix the damn save restore
-                player = new Player("Reggie", 100, 15);
-
-                // find what map the save points to
-                currentMapIndex = maps.FindIndex(
-                    m => m.MapName == saveData.MapProgress.MapName);
-                if (currentMapIndex < 0)
-                {
-                    currentMapIndex = 0;
-                }
-            }
-            else
-            {
-                player = new Player("Reggie", 100, 15);
-                currentMapIndex = 0;
-            }
-
-            _session = new GameSession(player, maps, currentMapIndex);
+            // ask factory for a ready to use session
+            // Gosh this feels so much cleaner than doing all the setup in the form directly
+            _session = GameSessionFactory.CreateNewSession();
             InitializeGrid();
             //InitializeDialogs();
             LoadCurrentSection();
-
         }
 
         private void InitializeGrid()
@@ -169,22 +142,6 @@ namespace Group_Project
                     }
                 }
             }
-        }
-
-        /*
-         This method is being called during startup in InitializeGame()
-         instead of just building everything in one gargantuan method, we'll delegate to one
-         priv builder per map. Keeps everything self-contained
-         this delegates building to the MapFactory classes,
-         which in turn delegate to the MapEntityFactory for creating entities
-        */
-        private List<GameMap> InitializeAllMaps()
-        {
-            // delegate to individual builders for each map, then add them to the list and return
-            return new List<GameMap>
-            {
-                Map1Factory.BuildMap1()
-            };
         }
     }
 }
