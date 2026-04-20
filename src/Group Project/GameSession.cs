@@ -96,5 +96,23 @@ namespace Group_Project
             return true;
 
         }
+
+        public bool TryHandleTileClick(int row, int column)
+        {
+            // check if clicked tile is an arrow and try moving to the destination section
+            if (TryMoveToTileDestination(row, column))
+            {
+                return true;
+            }
+
+            // try picking up item
+            if (TryPickUpItem(row, column))
+            {
+                return true;
+            }
+
+            // nothing happened
+            return false;
+        }
     }
 }
