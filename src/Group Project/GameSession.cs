@@ -66,5 +66,35 @@ namespace Group_Project
             // if the tile is an arrow, use the tile's DestinationSectionId to move to the next section
             return CurrentMap.GoToSection(tile.DestinationSectionId);
         }
+
+        public bool TryPickUpItem(int row, int column)
+        {
+            // look up clicked tile from active section
+            Tile tile = CurrentSection.GetTile(row, column);
+            if (tile == null)
+            {
+                return false;
+            }
+
+            // check if the tile is an item tile and can be interacted with
+            TileType interactionType = tile.LoadInteraction();
+            if (interactionType != TileType.Item)
+            {
+                return false;
+            }
+
+            // safely get item ref. stored on tile (using `as`)
+            Item item = tile.Entity as Item;
+            if (item == null)
+            {
+                return false;
+            }
+
+            // apply pickup then mark tile as completed
+            Player.AddItem(item);
+            tile.CompleteInteraction();
+            return true;
+
+        }
     }
 }
