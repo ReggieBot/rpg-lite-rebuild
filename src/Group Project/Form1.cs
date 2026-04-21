@@ -279,7 +279,7 @@ namespace Group_Project
             {
                 _session.CompleteEnemyCombat(row, column);
                 labelStatus.Text = enemy.Name + " defeated!";
-                LoadCurrentSection;
+                LoadCurrentSection();
             }
             else if (combatForm.PlayerDied)
             {
