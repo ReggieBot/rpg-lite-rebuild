@@ -168,16 +168,6 @@ namespace Group_Project
                         tileBox.ImageLocation = imagePathToShow;
                     }
 
-                    // make arrow tiles blue for now so I can see them
-                    // still need to fix all of these assets
-                    if (tile.Type == TileType.ArrowLeft ||
-                        tile.Type == TileType.ArrowRight ||
-                        tile.Type == TileType.ArrowUp ||
-                        tile.Type == TileType.ArrowDown)
-                    {
-                        tileBox.BackColor = Color.LightBlue;
-                    }
-
                     if (tile.Entity != null)
                     {
                         tileBox.Name = tile.Entity.Name;
