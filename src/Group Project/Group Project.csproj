@@ -88,6 +88,7 @@
     <Compile Include="Maps\MapEntityFactory.cs" />
     <Compile Include="Maps\Map1Factory.cs" />
     <Compile Include="IMapEntity.cs" />
+    <Compile Include="CombatSession.cs" />
     <Compile Include="GameSession.cs" />
     <Compile Include="GameSessionFactory.cs" />
     <Compile Include="PlayerDirection.cs" />
