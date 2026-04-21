@@ -130,10 +130,10 @@ namespace Group_Project
                     // clear old visual state first
                     // otherwise old images, colours, etc. can persist on wrong tile
                     tileBox.Image = null;
-                    TileBox.ImageLocation = null;
-                    TileBox.Name = string.Empty;
+                    tileBox.ImageLocation = null;
+                    tileBox.Name = string.Empty;
                     tileBox.BorderStyle = BorderStyle.None;
-                    TileBox.BackColor = Color.DarkGray;
+                    tileBox.BackColor = Color.DarkGray;
 
                     if (tile == null)
                     {
