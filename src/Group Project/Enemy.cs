@@ -49,7 +49,7 @@ namespace Group_Project
         /// </summary>
         public override void Die()
         {
-            // Play death sound, signal combat manager enemy is defeated
+            CurrentHealth = 0;
         }
         public double Attack(Player player)
         {
@@ -58,6 +58,7 @@ namespace Group_Project
             // checks if damage is greater than health, if so, the enemy of this object dies
             if (damage >= player.CurrentHealth)
             {
+                player.CurrentHealth = 0;
                 player.Die();
             }
             else
