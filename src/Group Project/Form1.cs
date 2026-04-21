@@ -16,10 +16,14 @@ namespace Group_Project
         // === CORE GAME OBJECTS ===
         private GameSession _session;
         private Image _grassTileImage;
-        private const string PlayerSpritePath = @"assets\img\Player\player_direction_up.png";
+        private const string PlayerSpritePathUp = @"assets\img\Player\player_direction_up.png";
+        private const string PlayerSpritePathDown = @"assets\img\Player\player_direction_down.png";
+        private const string PlayerSpritePathLeft = @"assets\img\Player\player_direction_left";
+        private const string PlayerSpritePathRight = @"assets\img\Player\player_direction_right.png";
+
         // === UI GRID ===
         private PictureBox[,] _tileBoxes = new PictureBox[7, 7];
-        
+
         public MainForm()
         {
             InitializeComponent();
@@ -74,7 +78,7 @@ namespace Group_Project
                 }
             }
         }
-        
+
         // click handler for tiles
         private void OnTileClicked(object sender, EventArgs e)
         {
@@ -156,7 +160,7 @@ namespace Group_Project
                     // player sprite overrides normal tile image
                     if (isPlayerHere)
                     {
-                        imagePathToShow = PlayerSpritePath;
+                        imagePathToShow = GetPlayerSpritePath();
                     }
 
                     // only assign image path if it's different from one on the PictureBox
@@ -235,6 +239,23 @@ namespace Group_Project
             }
 
             return true;
+        }
+
+        private string GetPlayerSpritePath()
+        {
+            if (_session.PlayerFacing == PlayerDirection.Up)
+            {
+                return PlayerSpritePathUp;
+            }
+            else if (_session.PlayerFacing == PlayerDirection.Down)
+            {
+                return PlayerSpritePathDown;
+            }
+            else if (_session.PlayerFacing == PlayerDirection.Left)
+            {
+                return PlayerSpritePathLeft;
+            }
+            return PlayerSpritePathRight;
         }
     }
 }
