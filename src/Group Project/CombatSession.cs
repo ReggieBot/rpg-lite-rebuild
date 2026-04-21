@@ -23,5 +23,42 @@ namespace Group_Project
             PlayerWon = false;
             PlayerDied = false;
         }
+
+        public string ProcessRound()
+        {
+            // if fight is over don't allow more turns
+            if (CombatFinished)
+            {
+                return "Combat is over";
+            }
+
+            double playerDamage = Player.Attack(Enemy);
+
+            if (!Enemy.IsAlive)
+            {
+                CombatFinished = true;
+                PlayerWon = true;
+
+                return Player.Name + " dealt" + (int)playerDamage +
+                       " damage and defeated " + Enemy.Name;
+            }
+
+            double enemyDamage = Enemy.Attack(Player);
+
+            // if player died from enemy's counter attack then end fight now
+            if (!Player.IsAlive)
+            {
+                CombatFinished = true;
+                PlayerDied = true;
+
+                return Enemy.Name + " dealt" + (int)enemyDamage +
+                       " damage and defeated you";
+            }
+
+            // if both are still alive then report the full round (summary?)
+            return Player.Name + " dealt" + (int)playerDamage + " damage." +
+                   Environment.NewLine +
+                   Enemy.Name + " dealt" + (int)enemyDamage + " damage";
+        }
     }
 }
