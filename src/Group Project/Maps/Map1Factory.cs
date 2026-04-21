@@ -33,7 +33,7 @@ namespace Group_Project {
                 30,
                 30,
                 false,
-                @"assets\img\Npcs\Hostiles\DrSalvador\DrSalvador_SpriteIcon.jpg",
+                @"assets\img\Npcs\Hostiles\DrSalvador\DrSalvador_SpriteIcon.png",
                 @"assets\img\Npcs\Hostiles\DrSalvador\DrSalvador_InteractionIcon.png",
                 @"assets\sounds\npcs\Hostiles\DrSalvador\DrSalvador_EnemyDeath.wav",
                 @"assets\sounds\npcs\Hostiles\DrSalvador\DrSalvador_EnemyCriticalHit.wav");
@@ -77,8 +77,8 @@ namespace Group_Project {
             // [NPC] Siegward
             FriendlyNPC siegward = MapEntityFactory.CreateNpc(
                 "Siegward",
-                @"assets\img\Npcs\RecruitableNpcs\Siegward\Siegward_SpriteIcon.jpg",
-                @"assets\img\Npcs\RecruitableNpcs\Siegward\Siegward_InteractionIcon.jpg",
+                @"assets\img\Npcs\RecruitableNpcs\Siegward\Siegward_SpriteIcon.png",
+                @"assets\img\Npcs\RecruitableNpcs\Siegward\Siegward_InteractionIcon.png",
                 "Siegbrau");
 
             // [NPC] Solaire
@@ -105,7 +105,7 @@ namespace Group_Project {
                 "Siegbrau",
                 "A warm drink for Siegward.",
                 "Give to Siegward to recruit him.",
-                "PLACEHOLDER PATHING",
+                @"assets\img\Npcs\RecruitableNpcs\Siegward\Siegward_ItemRequired.png",
                 1);
 
             map1.MapItems.Add(firstAidSpray);
@@ -125,7 +125,7 @@ namespace Group_Project {
 
             // [ENEMY] Dr. Salvador
             MapEntityFactory.AddTile(m1_Section1, 1, 2, TileType.Enemy, drSalvador,
-                @"assets\img\Npcs\Hostiles\DrSalvador\DrSalvador_SpriteIcon.jpg");
+                @"assets\img\Npcs\Hostiles\DrSalvador\DrSalvador_SpriteIcon.png");
 
             // [ENEMY] Regenerator
             MapEntityFactory.AddTile(m1_Section1, 4, 1, TileType.Enemy, regenerator,
@@ -133,11 +133,11 @@ namespace Group_Project {
 
             // [INVENTORY]
             MapEntityFactory.AddTile(m1_Section1, 3, 3, TileType.Inventory, null,
-                "PLACEHOLDER");
+                @"assets\img\MapItems\assets_img_MapItems_Inventory.png");
 
             // [ARROW] leads to Section 2
             MapEntityFactory.AddTile(m1_Section1, 3, 0, TileType.ArrowLeft,
-                imagePath: "PLACEHOLDER", destinationSectionId: "left"); // index of LeftSection
+                imagePath: @"assets\img\MapItems\assets_img_MapItems_ArrowLeft.png", destinationSectionId: "left"); // index of LeftSection
 
 
             // Section 2 scaffolding
@@ -145,11 +145,11 @@ namespace Group_Project {
 
             // [NPC] Siegward
             MapEntityFactory.AddTile(m1_Section2, 2, 4, TileType.FriendlyNPC, siegward,
-                @"assets\img\Npcs\RecruitableNpcs\Siegward\Siegward_SpriteIcon.jpg");
+                @"assets\img\Npcs\RecruitableNpcs\Siegward\Siegward_SpriteIcon.png");
 
             // [ITEM] Siegbrau
             MapEntityFactory.AddTile(m1_Section2, 5, 1, TileType.Item, siegbrau,
-                "PLACEHOLDER PATHING");
+                @"assets\img\Npcs\RecruitableNpcs\Siegward\Siegward_ItemRequired.png");
 
             // [ENEMY] BigDaddy
             MapEntityFactory.AddTile(m1_Section2, 1, 1, TileType.Enemy, bigDaddy,
@@ -157,15 +157,15 @@ namespace Group_Project {
 
             // [INVENTORY]
             MapEntityFactory.AddTile(m1_Section2, 3, 3, TileType.Inventory, null,
-                "PLACEHOLDER");
+                @"assets\img\MapItems\assets_img_MapItems_Inventory.png");
 
             // [ARROW] leads back to Section 1
             MapEntityFactory.AddTile(m1_Section2, 3, 6, TileType.ArrowRight,
-                imagePath: "PLACEHOLDER", destinationSectionId: "main"); // index of MainSection
+                imagePath: @"assets\img\MapItems\assets_img_MapItems_ArrowRight.png", destinationSectionId: "main"); // index of MainSection
 
             // [ARROW] leads to Section 3
             MapEntityFactory.AddTile(m1_Section2, 0, 0, TileType.ArrowUp,
-                imagePath: "PLACEHOLDER", destinationSectionId: "up"); // index of section 3
+                imagePath: @"assets\img\MapItems\assets_img_MapItems_ArrowUp.png", destinationSectionId: "up"); // index of section 3
 
 
             // section 3 scaffolding
@@ -177,7 +177,7 @@ namespace Group_Project {
 
             // [INVENTORY]
             MapEntityFactory.AddTile(m1_Section3, 2, 0, TileType.Inventory, null,
-                "PLACEHOLDER");
+                @"assets\img\MapItems\assets_img_MapItems_Inventory.png");
 
             // [BOSS] Nemesis
             MapEntityFactory.AddTile(m1_Section3, 1, 5, TileType.Boss, nemesis,
@@ -185,7 +185,7 @@ namespace Group_Project {
 
             // [ARROW] leads back to Section 2
             MapEntityFactory.AddTile(m1_Section3, 6, 0, TileType.ArrowDown,
-                imagePath: "PLACEHOLDER", destinationSectionId: "left"); //
+                imagePath: @"assets\img\MapItems\assets_img_MapItems_ArrowDown.png", destinationSectionId: "left"); //
 
 
 
