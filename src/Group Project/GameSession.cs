@@ -235,10 +235,17 @@ namespace Group_Project
 
         }
 
+        // try to handle a click on the tile at a specified row/column
+        // uses checks from above to determine what the click should do (if anything)
         public bool TryHandleTileClick(int row, int column)
         {
             // check if clicked tile is an arrow and try moving to the destination section
             if (TryMoveToTileDestination(row, column))
+            {
+                return true;
+            }
+
+            if (TryToMovePlayer(row, column))
             {
                 return true;
             }
