@@ -90,6 +90,7 @@
     <Compile Include="IMapEntity.cs" />
     <Compile Include="GameSession.cs" />
     <Compile Include="GameSessionFactory.cs" />
+    <Compile Include="PlayerDirection.cs" />
     <Compile Include="FriendlyNpc.cs" />
     <Compile Include="GameMap.cs" />
     <Compile Include="GameState.cs" />
