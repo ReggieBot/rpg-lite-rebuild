@@ -176,6 +176,26 @@ namespace Group_Project
                     }
                 }
             }
+
+            // update sidebar after board redraw finishes
+            UpdateSideBar();
+        }
+
+        private void UpdateSideBar()
+        {
+            Player player = _session.Player;
+
+            // keep stat label in sync with actual player object
+            labelPlayerStats.Text =
+                "HP: " + ((int)player.CurrentHealth) + "/" + ((int)player.MaxHealth) +
+                Environment.NewLine +
+                "DMG: " + ((int)player.CurrentDamage) + " | LVL: " + player.Level;
+
+            // default status text after successful action
+            labelStatus.Text =
+                "Exploring" +
+                Environment.NewLine +
+                "Pos: (" + _session.PlayerRow + ", " + _session.PlayerColumn + ")";
         }
     }
 }
