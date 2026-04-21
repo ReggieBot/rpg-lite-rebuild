@@ -48,13 +48,59 @@ namespace Group_Project
             _currentMapIndex = currentMapIndex;
             CurrentState = GameState.Exploring;
 
-            SetPlayerSpawnForCurrentSection();
+            SetStartingSpawnForCurrentSection();
         }
 
-        private void SetPlayerSpawnForCurrentSection()
+        private void SetStartingSpawnForCurrentSection()
         {
             PlayerRow = 6;
             PlayerColumn = 3;
+        }
+
+        private void SetSpawnFromReturnArrow(string previousSectionId)
+        {
+            // look through every tile in the new current section
+            // find the arrow that points back to the section player just came from
+            for (int row = 0; row < Section.GRID_SIZE; row++)
+            {
+                for (int column = 0; column < Section.GRID_SIZE; column++)
+                {
+                    Tile tile = CurrentSection.GetTile(row, column);
+
+                    if (tile == null)
+                    {
+                        continue;
+                    }
+
+                    // only care about arrows that lead back to prev. section
+                    if (tile.DestinationSectionId != previousSectionId)
+                    {
+                        continue;
+                    }
+
+                    switch (tile.Type)
+                    {
+                        case TileType.ArrowLeft:
+                            PlayerRow = row;
+                            PlayerColumn = column + 1;
+                            return;
+                        case TileType.ArrowRight:
+                            PlayerRow = row;
+                            PlayerColumn = column - 1;
+                            return;
+                        case TileType.ArrowUp:
+                            PlayerRow = row + 1;
+                            PlayerColumn = column;
+                            return;
+                        case TileType.ArrowDown:
+                            PlayerRow = row - 1;
+                            PlayerColumn = column;
+                            return;
+                    }
+                }
+            }
+            // fallback if no matching return arrow exits
+            SetStartingSpawnForCurrentSection();
         }
 
         // prevent accidental access to tiles outside board
@@ -183,6 +229,8 @@ namespace Group_Project
                 return false;
             }
 
+            string previousSectionId = CurrentSection.SectionId;
+
             bool movedToNewSection = CurrentMap.GoToSection(tile.DestinationSectionId);
             if (!movedToNewSection)
             {
@@ -191,7 +239,7 @@ namespace Group_Project
 
             // after changing sections we need to respawn the player
             // hoping to improve this to mirrow arrow tile of prev. section in the future
-            SetPlayerSpawnForCurrentSection();
+            SetSpawnFromReturnArrow(previousSectionId);
             return true;
         }
 
