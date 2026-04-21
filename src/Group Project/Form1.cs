@@ -140,11 +140,7 @@ namespace Group_Project
                         continue;
                     }
 
-                    // some map tiles still use placeholders
-                    // skipping those for now so I can actually check movement
-                    if (!String.IsNullOrWhiteSpace(tile.ImagePath) &&
-                        tile.ImagePath != "PLACEHOLDER" &&
-                        tile.ImagePath != "PLACEHOLDER PATHING")
+                    if (ShouldShowTileImage(tile))
                     {
                         tileBox.ImageLocation = tile.ImagePath;
                     }
@@ -196,6 +192,37 @@ namespace Group_Project
                 "Exploring" +
                 Environment.NewLine +
                 "Pos: (" + _session.PlayerRow + ", " + _session.PlayerColumn + ")";
+        }
+
+        private bool ShouldShowTileImage(Tile tile)
+        {
+            if (tile == null)
+            {
+                return false;
+            }
+
+            if (tile.InteractionFinished)
+            {
+                if (tile.Type == TileType.Item ||
+                    tile.Type == TileType.Enemy ||
+                    tile.Type == TileType.Boss)
+                {
+                    return false;
+                }
+            }
+
+            if (string.IsNullOrWhiteSpace(tile.ImagePath))
+            {
+                return false;
+            }
+
+            if (tile.ImagePath == "PLACEHOLDER" ||
+                tile.ImagePath == "PLACEHOLDER PATHING")
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
