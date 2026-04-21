@@ -95,7 +95,10 @@ namespace Group_Project
             int column = position.Y;
 
             // combat gets first chance to consume the click (who doesn't like combat?)
-
+            if (TryToStartCombat(row, column))
+            {
+                return;
+            }
 
             // let GameSession decide what click does
             if (_session.TryHandleTileClick(row, column))
