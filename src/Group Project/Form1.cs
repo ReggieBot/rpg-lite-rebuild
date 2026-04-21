@@ -91,6 +91,11 @@ namespace Group_Project
             {
                 LoadCurrentSection();
             }
+            // temporary label so I can see if this actually works
+            else
+            {
+                labelStatus.Text = "Can't interact with this tile";
+            }
         }
 
         // load current sections to tiles 
@@ -122,15 +127,37 @@ namespace Group_Project
                     PictureBox tileBox = _tileBoxes[row, col];
                     Tile tile = currentSection.GetTile(row, col);
 
+                    // clear old visual state first
+                    // otherwise old images, colours, etc. can persist on wrong tile
+                    tileBox.Image = null;
+                    TileBox.ImageLocation = null;
+                    TileBox.Name = string.Empty;
+                    tileBox.BorderStyle = BorderStyle.None;
+                    TileBox.BackColor = Color.DarkGray;
+
                     if (tile == null)
                     {
-                        tileBox.ImageLocation = null;
-                        tileBox.Name = string.Empty;
-                        // continue to next iteration, so we don't access the tile's null property
                         continue;
                     }
 
-                    tileBox.ImageLocation = tile.ImagePath;
+                    // some map tiles still use placeholders
+                    // skipping those for now so I can actually check movement
+                    if (!String.IsNullOrWhiteSpace(tile.ImagePath) &&
+                        tile.ImagePath != "PLACEHOLDER" &&
+                        tile.ImagePath != "PLACEHOLDER PATHING")
+                    {
+                        tileBox.ImageLocation = tile.ImagePath;
+                    }
+
+                    // make arrow tiles blue for now so I can see them
+                    // still need to fix all of these assets
+                    if (tile.Type == TileType.ArrowLeft ||
+                        tile.Type == TileType.ArrowRight ||
+                        tile.Type == TileType.ArrowUp ||
+                        tile.Type == TileType.ArrowDown)
+                    {
+                        tileBox.BackColor = Color.LightBlue;
+                    }
 
                     if (tile.Entity != null)
                     {
@@ -139,6 +166,13 @@ namespace Group_Project
                     else
                     {
                         tileBox.Name = tile.Type.ToString();
+                    }
+
+                    // temporary player renderer until I find asset
+                    if (_session.IsPlayerOnTile(row, col))
+                    {
+                        tileBox.BackColor = Color.Gold;
+                        tileBox.BorderStyle = BorderStyle.FixedSingle;
                     }
                 }
             }
