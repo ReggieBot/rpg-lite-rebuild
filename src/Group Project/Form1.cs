@@ -128,9 +128,7 @@ namespace Group_Project
                     Tile tile = currentSection.GetTile(row, col);
 
                     // clear old visual state first
-                    // otherwise old images, colours, etc. can persist on wrong tile
-                    tileBox.Image = null;
-                    tileBox.ImageLocation = null;
+                    // otherwise old colours, borders, etc. can persist on wrong tile
                     tileBox.Name = string.Empty;
                     tileBox.BorderStyle = BorderStyle.None;
                     tileBox.BackColor = Color.DarkGray;
@@ -140,8 +138,23 @@ namespace Group_Project
                         continue;
                     }
 
-                    if (ShouldShowTileImage(tile))
+                    bool shouldShowImage = ShouldShowTileImage(tile);
+
+                    if (!shouldShowImage)
                     {
+                        // only clear if we actually need to
+                        // otherwise we get flashing on every movement tick (reloading)
+                        if (tileBox.ImageLocation != null)
+                        {
+                            tileBox.ImageLocation = null;
+                        }
+                    }
+                    // only assign image path if it's different from one on the PictureBox
+                    // StringComparison.OrdinalIgnoreCase compahttps://learn.microsoft.com/en-us/dotnet/api/system.stringcomparer.ordinalignorecase?view=net-10.0
+                    else if (!string.Equals(tileBox.ImageLocation,
+                            tile.ImagePath, StringComparison.OrdinalIgnoreCase))
+                    {
+                        // don't make WinForms reload the same file every move
                         tileBox.ImageLocation = tile.ImagePath;
                     }
 
