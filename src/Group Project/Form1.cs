@@ -16,6 +16,7 @@ namespace Group_Project
         // === CORE GAME OBJECTS ===
         private GameSession _session;
         private Image _grassTileImage;
+        private const string PlayerSpritePath = @"assets\img\Player\player_direction_up.png";
         // === UI GRID ===
         private PictureBox[,] _tileBoxes = new PictureBox[7, 7];
         
@@ -124,6 +125,7 @@ namespace Group_Project
 
             // assign images to tiles based on the section's tile data
             for (int row = 0; row < 7; row++)
+
             {
                 for (int col = 0; col < 7; col++)
                 {
@@ -142,23 +144,28 @@ namespace Group_Project
                     }
 
                     bool shouldShowImage = ShouldShowTileImage(tile);
+                    bool isPlayerHere = _session.IsPlayerOnTile(row, col);
+                    string imagePathToShow = null;
 
-                    if (!shouldShowImage)
+                    if (shouldShowImage)
                     {
-                        // only clear if we actually need to
-                        // otherwise we get flashing on every movement tick (reloading)
-                        if (tileBox.ImageLocation != null)
-                        {
-                            tileBox.ImageLocation = null;
-                        }
+                        // default to tiles normal image
+                        imagePathToShow = tile.ImagePath;
                     }
+
+                    // player sprite overrides normal tile image
+                    if (isPlayerHere)
+                    {
+                        imagePathToShow = PlayerSpritePath;
+                    }
+
                     // only assign image path if it's different from one on the PictureBox
                     // StringComparison.OrdinalIgnoreCase compahttps://learn.microsoft.com/en-us/dotnet/api/system.stringcomparer.ordinalignorecase?view=net-10.0
-                    else if (!string.Equals(tileBox.ImageLocation,
-                            tile.ImagePath, StringComparison.OrdinalIgnoreCase))
+                    if (!string.Equals(tileBox.ImageLocation,
+                        tile.ImagePath, StringComparison.OrdinalIgnoreCase))
                     {
-                        // don't make WinForms reload the same file every move
-                        tileBox.ImageLocation = tile.ImagePath;
+                        // only update if image actually changed
+                        tileBox.ImageLocation = imagePathToShow;
                     }
 
                     // make arrow tiles blue for now so I can see them
@@ -180,10 +187,9 @@ namespace Group_Project
                         tileBox.Name = tile.Type.ToString();
                     }
 
-                    // temporary player renderer until I find asset
-                    if (_session.IsPlayerOnTile(row, col))
+                    // keep border
+                    if (isPlayerHere)
                     {
-                        tileBox.BackColor = Color.Gold;
                         tileBox.BorderStyle = BorderStyle.FixedSingle;
                     }
                 }
