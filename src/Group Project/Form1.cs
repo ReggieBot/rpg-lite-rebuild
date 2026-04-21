@@ -18,7 +18,7 @@ namespace Group_Project
         private Image _grassTileImage;
         private const string PlayerSpritePathUp = @"assets\img\Player\player_direction_up.png";
         private const string PlayerSpritePathDown = @"assets\img\Player\player_direction_down.png";
-        private const string PlayerSpritePathLeft = @"assets\img\Player\player_direction_left";
+        private const string PlayerSpritePathLeft = @"assets\img\Player\player_direction_left.png";
         private const string PlayerSpritePathRight = @"assets\img\Player\player_direction_right.png";
 
         // === UI GRID ===
