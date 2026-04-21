@@ -321,7 +321,7 @@ namespace Group_Project
             }
 
             // look up tile in current section
-            Tile tile = CurrentSection.GetTile(row, column)
+            Tile tile = CurrentSection.GetTile(row, column);
             if (tile == null)
             {
                 return false;
@@ -362,6 +362,12 @@ namespace Group_Project
 
             if (tile.Type != TileType.Enemy &&
                 tile.Type != TileType.Boss)
+            {
+                return false;
+            }
+
+            Enemy enemy = tile.Entity as Enemy;
+            if (enemy == null)
             {
                 return false;
             }
