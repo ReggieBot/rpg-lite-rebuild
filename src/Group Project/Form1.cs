@@ -15,7 +15,7 @@ namespace Group_Project
     {
         // === CORE GAME OBJECTS ===
         private GameSession _session;
-        private image _grassTileImage;
+        private Image _grassTileImage;
         // === UI GRID ===
         private PictureBox[,] _tileBoxes = new PictureBox[7, 7];
         
@@ -34,8 +34,8 @@ namespace Group_Project
             // ask factory for a ready to use session
             // Gosh this feels so much cleaner than doing all the setup in the form directly
             _session = GameSessionFactory.CreateNewSession();
-            InitializeGrid();
             _grassTileImage = Image.FromFile(@"assets\img\Tiles\grass_tile.png");
+            InitializeGrid();
             LoadCurrentSection();
         }
 
