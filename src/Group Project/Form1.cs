@@ -15,10 +15,15 @@ namespace Group_Project
     {
         // === CORE GAME OBJECTS ===
         private GameSession _session;
+        private Image _grassTileImage;
+        private const string PlayerSpritePathUp = @"assets\img\Player\player_direction_up.png";
+        private const string PlayerSpritePathDown = @"assets\img\Player\player_direction_down.png";
+        private const string PlayerSpritePathLeft = @"assets\img\Player\player_direction_left.png";
+        private const string PlayerSpritePathRight = @"assets\img\Player\player_direction_right.png";
 
         // === UI GRID ===
         private PictureBox[,] _tileBoxes = new PictureBox[7, 7];
-        
+
         public MainForm()
         {
             InitializeComponent();
@@ -34,8 +39,8 @@ namespace Group_Project
             // ask factory for a ready to use session
             // Gosh this feels so much cleaner than doing all the setup in the form directly
             _session = GameSessionFactory.CreateNewSession();
+            _grassTileImage = Image.FromFile(@"assets\img\Tiles\grass_tile.png");
             InitializeGrid();
-            //InitializeDialogs();
             LoadCurrentSection();
         }
 
@@ -54,6 +59,9 @@ namespace Group_Project
                     // Padding usually takes a single int for all sides (you can check definition)
                     // but Winforms provides overloaded constructors (hence why I'm just using '1')
                     tileBox.Margin = new Padding(1);
+
+                    tileBox.BackgroundImage = _grassTileImage;
+                    tileBox.BackgroundImageLayout = ImageLayout.Stretch;
                     // could definitely go with zoom size mode here as well
                     tileBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     tileBox.BackColor = Color.DarkGray;
@@ -70,7 +78,7 @@ namespace Group_Project
                 }
             }
         }
-        
+
         // click handler for tiles
         private void OnTileClicked(object sender, EventArgs e)
         {
@@ -121,6 +129,7 @@ namespace Group_Project
 
             // assign images to tiles based on the section's tile data
             for (int row = 0; row < 7; row++)
+
             {
                 for (int col = 0; col < 7; col++)
                 {
@@ -128,9 +137,7 @@ namespace Group_Project
                     Tile tile = currentSection.GetTile(row, col);
 
                     // clear old visual state first
-                    // otherwise old images, colours, etc. can persist on wrong tile
-                    tileBox.Image = null;
-                    tileBox.ImageLocation = null;
+                    // otherwise old colours, borders, etc. can persist on wrong tile
                     tileBox.Name = string.Empty;
                     tileBox.BorderStyle = BorderStyle.None;
                     tileBox.BackColor = Color.DarkGray;
@@ -140,19 +147,29 @@ namespace Group_Project
                         continue;
                     }
 
-                    if (ShouldShowTileImage(tile))
+                    bool shouldShowImage = ShouldShowTileImage(tile);
+                    bool isPlayerHere = _session.IsPlayerOnTile(row, col);
+                    string imagePathToShow = null;
+
+                    if (shouldShowImage)
                     {
-                        tileBox.ImageLocation = tile.ImagePath;
+                        // default to tiles normal image
+                        imagePathToShow = tile.ImagePath;
                     }
 
-                    // make arrow tiles blue for now so I can see them
-                    // still need to fix all of these assets
-                    if (tile.Type == TileType.ArrowLeft ||
-                        tile.Type == TileType.ArrowRight ||
-                        tile.Type == TileType.ArrowUp ||
-                        tile.Type == TileType.ArrowDown)
+                    // player sprite overrides normal tile image
+                    if (isPlayerHere)
                     {
-                        tileBox.BackColor = Color.LightBlue;
+                        imagePathToShow = GetPlayerSpritePath();
+                    }
+
+                    // only assign image path if it's different from one on the PictureBox
+                    // StringComparison.OrdinalIgnoreCase compahttps://learn.microsoft.com/en-us/dotnet/api/system.stringcomparer.ordinalignorecase?view=net-10.0
+                    if (!string.Equals(tileBox.ImageLocation,
+                        imagePathToShow, StringComparison.OrdinalIgnoreCase))
+                    {
+                        // only update if image actually changed
+                        tileBox.ImageLocation = imagePathToShow;
                     }
 
                     if (tile.Entity != null)
@@ -164,10 +181,9 @@ namespace Group_Project
                         tileBox.Name = tile.Type.ToString();
                     }
 
-                    // temporary player renderer until I find asset
-                    if (_session.IsPlayerOnTile(row, col))
+                    // keep border
+                    if (isPlayerHere)
                     {
-                        tileBox.BackColor = Color.Gold;
                         tileBox.BorderStyle = BorderStyle.FixedSingle;
                     }
                 }
@@ -223,6 +239,23 @@ namespace Group_Project
             }
 
             return true;
+        }
+
+        private string GetPlayerSpritePath()
+        {
+            if (_session.PlayerFacing == PlayerDirection.Up)
+            {
+                return PlayerSpritePathUp;
+            }
+            else if (_session.PlayerFacing == PlayerDirection.Down)
+            {
+                return PlayerSpritePathDown;
+            }
+            else if (_session.PlayerFacing == PlayerDirection.Left)
+            {
+                return PlayerSpritePathLeft;
+            }
+            return PlayerSpritePathRight;
         }
     }
 }

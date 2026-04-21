@@ -18,6 +18,17 @@ namespace Group_Project
         // Player.cs shouldn't own this as it's directly related to current board state
         public int PlayerRow { get; private set; }
         public int PlayerColumn { get; private set; }
+        public PlayerDirection PlayerFacing { get; private set; }
+
+        public GameSession(Player player, List<GameMap> maps, int currentMapIndex)
+        {
+            Player = player;
+            _maps = maps;
+            _currentMapIndex = currentMapIndex;
+            CurrentState = GameState.Exploring;
+            PlayerFacing = PlayerDirection.Up;
+            SetStartingSpawnForCurrentSection();
+        }
 
         // expose active map in one place
         // CurrentMap exposes the sessions currently selected map
@@ -39,16 +50,6 @@ namespace Group_Project
             {
                 return CurrentMap.GetCurrentSection();
             }
-        }
-
-        public GameSession(Player player, List<GameMap> maps, int currentMapIndex)
-        {
-            Player = player;
-            _maps = maps;
-            _currentMapIndex = currentMapIndex;
-            CurrentState = GameState.Exploring;
-
-            SetStartingSpawnForCurrentSection();
         }
 
         private void SetStartingSpawnForCurrentSection()
@@ -189,6 +190,24 @@ namespace Group_Project
             if (!IsWalkableTile(tile))
             {
                 return false;
+            }
+
+            // set direction
+            if (row < PlayerRow)
+            {
+                PlayerFacing = PlayerDirection.Up;
+            }
+            else if (row > PlayerRow)
+            {
+                PlayerFacing = PlayerDirection.Down;
+            }
+            else if (column < PlayerColumn)
+            {
+                PlayerFacing = PlayerDirection.Left;
+            }
+            else if (column > PlayerColumn)
+            {
+                PlayerFacing = PlayerDirection.Right;
             }
 
             PlayerRow = row;

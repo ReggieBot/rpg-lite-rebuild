@@ -37,3 +37,4 @@ backups/
 *.suo
 
 packages/
+desktop.ini
