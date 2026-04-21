@@ -57,7 +57,7 @@ namespace Group_Project
         }
 
         // prevent accidental access to tiles outside board
-        private bool isInsideGrid(int row, int column)
+        private bool IsInsideGrid(int row, int column)
         {
             if (row < 0 || row >= Section.GRID_SIZE)
             {
@@ -153,6 +153,18 @@ namespace Group_Project
         // so the logic for moving to the next section or map belongs here too
         public bool TryMoveToTileDestination(int row, int column)
         {
+            if (!IsInsideGrid(row, column))
+            {
+                return false;
+            }
+
+            // now arrows can only be clicked if they are next to a player
+            // before they were accessible from any location on the board
+            if (!IsAdjacentToPlayer(row, column))
+            {
+                return false;
+            }
+
             Tile tile = CurrentSection.GetTile(row, column);
             if (tile == null)
             {
@@ -170,12 +182,31 @@ namespace Group_Project
                 return false;
             }
 
-            // if the tile is an arrow, use the tile's DestinationSectionId to move to the next section
-            return CurrentMap.GoToSection(tile.DestinationSectionId);
+            bool movedToNewSection = CurrentMap.GoToSection(tile.DestinationSectionId);
+            if (!movedToNewSection)
+            {
+                return false;
+            }
+
+            // after changing sections we need to respawn the player
+            // hoping to improve this to mirrow arrow tile of prev. section in the future
+            SetPlayerSpawnForCurrentSection();
+            return true;
         }
 
         public bool TryPickUpItem(int row, int column)
         {
+            if (!IsInsideGrid(row, column))
+            {
+                return false;
+            }
+
+            // player must now be next to an item to pick it up
+            if (!IsAdjacentToPlayer(row, column))
+            {
+                return false;
+            }
+
             // look up clicked tile from active section
             Tile tile = CurrentSection.GetTile(row, column);
             if (tile == null)
