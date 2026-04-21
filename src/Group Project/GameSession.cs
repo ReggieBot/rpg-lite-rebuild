@@ -72,6 +72,30 @@ namespace Group_Project
             return true;
         }
 
+        private bool IsAdjacentToPlayer(int row, int column)
+        {
+            // using 'Manhattan geometry' to determine if the tile is adjacent to the player
+            // it checks if the clicked tile is exactly one step away from the player
+            // measures the distance in terms of rows and columns separately, not diagonally
+            // using absolute value to account for direction (left vs. right, up vs. down)
+            int rowDifference = Math.Abs(PlayerRow - row);
+            int columnDifference = Math.Abs(PlayerColumn - column);
+
+            if (rowDifference == 1 && columnDifference == 0)
+            {
+                return true;
+            }
+
+            if (columnDifference == 1 && rowDifference == 0)
+            {
+                return true;
+            }
+
+            // not adjacent
+            return false;
+
+        }
+
         // make sure player is on tile
         public bool IsPlayerOnTile(int row, int column)
         {
@@ -81,6 +105,48 @@ namespace Group_Project
             }
 
             return false;
+        }
+
+        // only empty tiles can be walkable
+        private bool IsWalkableTile(Tile tile)
+        {
+            if (tile.Type == TileType.Empty)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        // this succeeds if the tile inside board, tile is next to player, tile exists, and tile is walkable
+        // if all checks pass then session updates PlayerRow and PlayerColumn (moving the player)
+        public bool TryToMovePlayer(int row, int column)
+        {
+            // check if player is inside grid first
+            if (!IsInsideGrid(row, column))
+            {
+                return false;
+            }
+
+            if (!IsAdjacentToPlayer(row, column))
+            {
+                return false;
+            }
+
+            Tile tile = CurrentSection.GetTile(row, column);
+            if (tile == null)
+            {
+                return false;
+            }
+
+            if (!IsWalkableTile(tile))
+            {
+                return false;
+            }
+
+            PlayerRow = row;
+            PlayerColumn = column;
+            return true;
         }
 
         // GameSession uses CurrentMap and CurrentSection, which don't belong to Form1 anymore
