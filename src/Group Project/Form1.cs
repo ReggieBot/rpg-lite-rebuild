@@ -162,7 +162,7 @@ namespace Group_Project
                     // only assign image path if it's different from one on the PictureBox
                     // StringComparison.OrdinalIgnoreCase compahttps://learn.microsoft.com/en-us/dotnet/api/system.stringcomparer.ordinalignorecase?view=net-10.0
                     if (!string.Equals(tileBox.ImageLocation,
-                        tile.ImagePathToShow, StringComparison.OrdinalIgnoreCase))
+                        imagePathToShow, StringComparison.OrdinalIgnoreCase))
                     {
                         // only update if image actually changed
                         tileBox.ImageLocation = imagePathToShow;
