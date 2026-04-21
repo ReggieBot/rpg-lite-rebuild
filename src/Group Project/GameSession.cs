@@ -26,7 +26,7 @@ namespace Group_Project
             _maps = maps;
             _currentMapIndex = currentMapIndex;
             CurrentState = GameState.Exploring;
-            PlayerFacing = Player.Direction.Up;
+            PlayerFacing = PlayerDirection.Up;
             SetStartingSpawnForCurrentSection();
         }
 
