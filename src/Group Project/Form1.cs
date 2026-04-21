@@ -94,6 +94,12 @@ namespace Group_Project
             int row = position.X;
             int column = position.Y;
 
+            // combat gets first chance to consume the click (who doesn't like combat?)
+            if (TryToStartCombat(row, column))
+            {
+                return;
+            }
+
             // let GameSession decide what click does
             if (_session.TryHandleTileClick(row, column))
             {
@@ -256,6 +262,43 @@ namespace Group_Project
                 return PlayerSpritePathLeft;
             }
             return PlayerSpritePathRight;
+        }
+
+        private bool TryToStartCombat(int row, int column)
+        {
+            Enemy enemy;
+
+            // ask GameSession if this click should start combat
+            if (!_session.TryToGetCombatEnemy(row, column, out enemy))
+            {
+                return false;
+            }
+
+            CombatForm combatForm = new CombatForm(_session.Player, enemy);
+            combatForm.ShowDialog(this);
+
+            // if player won then apply the world result and refresh the board
+            if (combatForm.PlayerWon)
+            {
+                _session.CompleteEnemyCombat(row, column);
+                labelStatus.Text = enemy.Name + " defeated!";
+                LoadCurrentSection();
+            }
+            else if (combatForm.PlayerDied)
+            {
+                MessageBox.Show(
+                    "You died! Starting a new run!",
+                    "Game Over",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                // restart
+                InitializeGame();
+            }
+
+            // dispose of the combat form after combat finishes
+            // not sure if this is really needed, but it's what I always see on StackOverflow lol
+            combatForm.Dispose();
+            return true;
         }
     }
 }

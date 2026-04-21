@@ -300,8 +300,96 @@ namespace Group_Project
             Player.AddItem(item);
             tile.CompleteInteraction();
             return true;
-
         }
+
+        // using 'out' here to let the method return an extra parameter (in this case the enemy)
+        // C# is pretty cool part 2
+        public bool TryToGetCombatEnemy(int row, int column, out Enemy enemy)
+        {
+            // assigning the out seems to be the standard practice
+            // this way the caller doesn't accidentally get an uninitialized var
+            enemy = null;
+
+            if (!IsInsideGrid(row, column))
+            {
+                return false;
+            }
+
+            if (!IsAdjacentToPlayer(row, column))
+            {
+                return false;
+            }
+
+            // look up tile in current section
+            Tile tile = CurrentSection.GetTile(row, column);
+            if (tile == null)
+            {
+                return false;
+            }
+
+            TileType interactionType = tile.LoadInteraction();
+
+            if (interactionType != TileType.Enemy &&
+                interactionType != TileType.Boss)
+            {
+                return false;
+            }
+
+            // tile holds direct reference, so we can safely cast to enemy
+            enemy = tile.Entity as Enemy;
+
+            if (enemy == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        // called after combat process closes with player victory
+        public bool CompleteEnemyCombat(int row, int column)
+        {
+            if (!IsInsideGrid(row, column))
+            {
+                return false;
+            }
+
+            Tile tile = CurrentSection.GetTile(row, column);
+            if (tile == null)
+            {
+                return false;
+            }
+
+            if (tile.Type != TileType.Enemy &&
+                tile.Type != TileType.Boss)
+            {
+                return false;
+            }
+
+            Enemy enemy = tile.Entity as Enemy;
+            if (enemy == null)
+            {
+                return false;
+            }
+
+            // guard against calls before combat was actually won
+            // I probably guard against too much
+            if (enemy.IsAlive)
+            {
+                return false;
+            }
+
+            // remove enemy from board (mark interaction complete)
+            // tile renderer knows to hide finished enemy tiles
+            tile.CompleteInteraction();
+
+            // give xp
+            Player.GainXP(enemy.XPReward);
+
+            return true;
+        }
+
+
 
         // try to handle a click on the tile at a specified row/column
         // uses checks from above to determine what the click should do (if anything)

@@ -43,7 +43,8 @@ namespace Group_Project
         /// </summary>
         public override void Die()
         {
-            // Trigger game over state, play death sound
+            // makes Organism.IsAlive == 0
+            CurrentHealth = 0;
         }
 
         /// <summary>
@@ -98,9 +99,10 @@ namespace Group_Project
         {
             // Numbers generated are higher for the player
             int damage = random.Next((int)(CurrentDamage * 0.8), (int)(CurrentDamage * 1.5));
-            // checks if damage is greater than health, if so, the enemy of this object dies
+            // if hit is lethal then force enemy's health to 0 first
             if (damage >= enemy.CurrentHealth)
             {
+                enemy.CurrentHealth = 0;
                 enemy.Die();
             }
             else
