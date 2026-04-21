@@ -15,7 +15,7 @@ namespace Group_Project
     {
         // === CORE GAME OBJECTS ===
         private GameSession _session;
-
+        private image _grassTileImage;
         // === UI GRID ===
         private PictureBox[,] _tileBoxes = new PictureBox[7, 7];
         
@@ -35,7 +35,7 @@ namespace Group_Project
             // Gosh this feels so much cleaner than doing all the setup in the form directly
             _session = GameSessionFactory.CreateNewSession();
             InitializeGrid();
-            //InitializeDialogs();
+            _grassTileImage = Image.FromFile(@"assets\img\Tiles\grass_tile.png");
             LoadCurrentSection();
         }
 
@@ -54,6 +54,9 @@ namespace Group_Project
                     // Padding usually takes a single int for all sides (you can check definition)
                     // but Winforms provides overloaded constructors (hence why I'm just using '1')
                     tileBox.Margin = new Padding(1);
+
+                    tileBox.BackgroundImage = _grassTileImage;
+                    tileBox.BackgroundImageLayout = ImageLayout.Stretch;
                     // could definitely go with zoom size mode here as well
                     tileBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     tileBox.BackColor = Color.DarkGray;
